@@ -12,4 +12,14 @@ public class BackendServiceImp implements BackendService {
     public void saveAdmin() {
 
     }
+
+    @Override
+    public void saveNewLocal() {
+
+    }
+
+    @Override
+    public void saveStock() {
+
+    }
 }
