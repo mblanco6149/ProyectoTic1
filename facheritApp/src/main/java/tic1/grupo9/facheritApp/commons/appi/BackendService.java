@@ -4,6 +4,9 @@ import java.rmi.Remote;
 
 public interface BackendService extends Remote {
 
+    void saveNewBrand();
+    void saveAdmin();
+
 
 
 
