@@ -18,6 +18,11 @@ public class Local {
 
     @Column
     @ManyToMany (cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Local_Brand",
+            joinColumns = { @JoinColumn(name = "local_id") },
+            inverseJoinColumns = { @JoinColumn(name = "brand_id") }
+    )
     List<Brand> brands;
 
 

@@ -22,7 +22,8 @@ public abstract class User {
     @NonNull
     protected String password;
 
-
-
-
+    public User(String email, @NonNull String password) {
+        this.email = email;
+        this.password = password;
+    }
 }

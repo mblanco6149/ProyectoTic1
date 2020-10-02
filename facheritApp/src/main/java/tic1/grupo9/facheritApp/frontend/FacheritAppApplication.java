@@ -19,6 +19,10 @@ public class FacheritAppApplication extends Application {
 	@Getter
 	private static Stage mainStage;
 
+	public static ConfigurableApplicationContext getAppiContext() {
+		return appiContext;
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(FacheritAppApplication.class, args);
 	}
