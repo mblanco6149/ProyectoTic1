@@ -37,7 +37,7 @@ public class FacheritAppApplication extends Application {
 	public void start(Stage stage) throws Exception {
 		mainStage = stage;
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("controllers/listaCliente.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("controllers/startAppi.fxml"));
 		loader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
 		rootNode = loader.load();
 
