@@ -1,9 +1,8 @@
 package tic1.grupo9.facheritApp.backend.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-import tic1.grupo9.facheritApp.backend.repository.ClientRepository;
+import tic1.grupo9.facheritApp.backend.repository.ClientRepo;
 import tic1.grupo9.facheritApp.commons.entities.Client;
 import tic1.grupo9.facheritApp.commons.exceptions.ClientNoExist;
 
@@ -11,14 +10,14 @@ import tic1.grupo9.facheritApp.commons.exceptions.ClientNoExist;
 public class ClientService  {
 
     @Autowired
-    ClientRepository clientRepository;
+    ClientRepo clientRepo;
 
     public void save(Client client){
-        clientRepository.save(client);
+        clientRepo.save(client);
     }
 
     public Client findByEmail(String email) throws ClientNoExist{
-        Client client = clientRepository.getOne(email);
+        Client client = clientRepo.getOne(email);
         if(client==null){
             throw new ClientNoExist();
         }
@@ -26,7 +25,7 @@ public class ClientService  {
     }
 
     public boolean clientExist(String email){
-       return clientRepository.existsById(email);
+       return clientRepo.existsById(email);
     }
 
 }
