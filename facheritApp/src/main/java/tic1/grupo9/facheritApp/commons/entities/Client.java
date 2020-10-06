@@ -13,25 +13,21 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 public class Client extends User {
 
-    @Column
-    protected String name;
+    @Column(name = "name")
+    protected String firstName;
 
-    @Column
-    protected String surname;
+    @Column(name = "surname")
+    protected String lastName;
 
-    @Column
+    @Column(name = "tel")
     protected long phone;
 
-    @Column
-    protected String direccion;
+    @Column(name = "direccion")
+    protected String address;
 
-    public Client(String email, String password, String name, String surname, long phone, String direccion)
+    public Client(String email, String password, String firstName, String lastName, long phone, String address)
     {
         super(email, password);
-        this.name=name;
-        this.surname=surname;
-        this.phone=phone;
-        this.direccion=direccion;
     }
 
 }

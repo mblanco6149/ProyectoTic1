@@ -10,7 +10,6 @@ import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User {
