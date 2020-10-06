@@ -6,7 +6,7 @@ import tic1.grupo9.facheritApp.backend.repository.ClothesRepo;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
 
 @Service
-public class ClothService {
+public class ClothesService {
 
     @Autowired
     ClothesRepo clothesRepo;
