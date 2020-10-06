@@ -1,14 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="tic1.grupo9.facheritApp.frontend.controllers.StartAppiController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.StartAppiController">
+   <children>
+      <ScrollPane layoutY="69.0" prefHeight="331.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
+         <content>
+            <GridPane gridLinesVisible="true" prefHeight="506.0" prefWidth="582.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="69.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextArea prefHeight="25.0" prefWidth="194.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="48.0" prefWidth="194.0" GridPane.columnIndex="1" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <MenuBar prefHeight="29.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Hombres">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Todo" />
+                  <MenuItem mnemonicParsing="false" text="Jeans" />
+                  <MenuItem mnemonicParsing="false" text="Camperas" />
+                  <MenuItem mnemonicParsing="false" text="Canguros" />
+              <MenuItem mnemonicParsing="false" text="Camisas" />
+                  <MenuItem mnemonicParsing="false" text="Remeras" />
+                  <MenuItem mnemonicParsing="false" text="Calzado" />
+                  <MenuItem mnemonicParsing="false" text="Pantalones" />
+                  <MenuItem mnemonicParsing="false" text="Bermudas" />
+                  <MenuItem mnemonicParsing="false" text="Ropa Interior" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Mujeres">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Todo" />
+                  <MenuItem mnemonicParsing="false" text="Camperas" />
+                  <MenuItem mnemonicParsing="false" text="Buzos" />
+                  <MenuItem mnemonicParsing="false" text="Bluzas" />
+                  <MenuItem mnemonicParsing="false" text="Remeras" />
+                  <MenuItem mnemonicParsing="false" text="Tops" />
+                  <MenuItem mnemonicParsing="false" text="Vestidos" />
+                  <MenuItem mnemonicParsing="false" text="Calzado" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Niños">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Buzos" />
+                  <MenuItem mnemonicParsing="false" text="Remeras" />
+                  <MenuItem mnemonicParsing="false" text="Camperas" />
+                  <MenuItem mnemonicParsing="false" text="Canguros" />
+                  <MenuItem mnemonicParsing="false" text="Pantalones" />
+                  <MenuItem mnemonicParsing="false" text="Jeans" />
+                  <MenuItem mnemonicParsing="false" text="Ropa Interior" />
+                  <MenuItem mnemonicParsing="false" text="Calzado" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Local">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Todos" />
+              </items>
+            </Menu>
+        </menus>
+         <padding>
+            <Insets left="150.0" />
+         </padding>
+      </MenuBar>
+      <ToolBar prefHeight="40.0" prefWidth="600.0">
+        <items>
+            <Text fill="#1b1457" strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp" wrappingWidth="75.21875">
+               <font>
+                  <Font name="Futura Medium" size="13.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="9.0" stroke="TRANSPARENT" strokeType="INSIDE" width="169.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="127.0" />
+          <Button alignment="TOP_RIGHT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Carrito" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Button>
+            <Button alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Button>
+        </items>
+      </ToolBar>
+   </children>
 </AnchorPane>
