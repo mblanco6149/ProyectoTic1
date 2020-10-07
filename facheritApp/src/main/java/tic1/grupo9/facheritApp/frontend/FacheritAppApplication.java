@@ -9,6 +9,8 @@ import lombok.Getter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import tic1.grupo9.facheritApp.commons.entities.Admin;
+import tic1.grupo9.facheritApp.commons.entities.User;
 
 @SpringBootApplication
 public class FacheritAppApplication extends Application {
@@ -44,4 +46,6 @@ public class FacheritAppApplication extends Application {
 		stage.setScene(new Scene(rootNode));
 		stage.show();
 	}
+
+
 }

@@ -1,4 +1,4 @@
-package tic1.grupo9.facheritApp;
+package tic1.grupo9.facheritApp.backend.test;
 
 
 import org.aspectj.lang.annotation.Before;
@@ -11,7 +11,7 @@ import tic1.grupo9.facheritApp.backend.services.ClientService;
 import tic1.grupo9.facheritApp.backend.services.LocalService;
 
 
-@SpringBootTest
+//@SpringBootTest
 public class FilingDatabaseTest {
 
 

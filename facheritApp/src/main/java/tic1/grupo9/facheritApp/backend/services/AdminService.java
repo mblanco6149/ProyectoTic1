@@ -1,12 +1,17 @@
 package tic1.grupo9.facheritApp.backend.services;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tic1.grupo9.facheritApp.backend.repository.AdminRepo;
 import tic1.grupo9.facheritApp.commons.entities.Admin;
 
 @Service
+@Data
+@NoArgsConstructor
 public class AdminService {
 
     @Autowired
@@ -16,5 +21,8 @@ public class AdminService {
         adminRepo.save(admin);
     }
 
+    public AdminRepo getAdminRepo() {
+        return adminRepo;
+    }
 
 }
