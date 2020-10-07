@@ -26,7 +26,7 @@ public class FacheritAppApplication extends Application {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(FacheritAppApplication.class, args);
+		launch(args);
 	}
 
 

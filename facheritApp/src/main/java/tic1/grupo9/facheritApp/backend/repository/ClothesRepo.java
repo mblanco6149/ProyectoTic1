@@ -25,7 +25,7 @@ public interface ClothesRepo extends JpaRepository<Clothes,Integer> {
     @Query("SELECT c.id FROM Clothes c where c.size = :size")
     public List<Clothes> findBySize(String size);
 
-
+    public List<Clothes> findByPriceBetween(double price1, double price2);
 
 
 }
