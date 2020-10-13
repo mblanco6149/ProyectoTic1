@@ -1,6 +1,7 @@
 package tic1.grupo9.facheritApp.backend.services;
 
 import lombok.Data;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tic1.grupo9.facheritApp.backend.repository.ClothesRepo;
@@ -15,6 +16,9 @@ public class ClothesService {
     @Autowired
     ClothesRepo clothesRepo;
 
+    public ClothesRepo getClothesRepo() {
+        return clothesRepo;
+    }
 
     public void save(Clothes clothes){
         clothesRepo.save(clothes);
