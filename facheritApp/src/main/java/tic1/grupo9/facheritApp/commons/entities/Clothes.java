@@ -18,7 +18,7 @@ public class Clothes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    protected int id;
+    protected Integer id;
 
     @Column
     @NonNull

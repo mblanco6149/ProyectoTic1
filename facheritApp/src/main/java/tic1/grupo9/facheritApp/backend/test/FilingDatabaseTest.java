@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import tic1.grupo9.facheritApp.backend.services.AdminService;
 import tic1.grupo9.facheritApp.backend.services.BrandService;
 import tic1.grupo9.facheritApp.backend.services.ClientService;

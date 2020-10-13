@@ -19,10 +19,10 @@ public class Client extends User {
     @Column(name = "surname")
     protected String lastName;
 
-    @Column(name = "tel")
+    @Column(name = "phone")
     protected long phone;
 
-    @Column(name = "direccion")
+    @Column(name = "address")
     protected String address;
 
     public Client(String email, String password, String firstName, String lastName, long phone, String address)
