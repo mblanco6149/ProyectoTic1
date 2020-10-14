@@ -30,4 +30,7 @@ public interface ClothesRepo extends JpaRepository<Clothes,Integer> {
     public List<Clothes> findByGender(String gender);
 
     public Clothes findTopByOrderByIdDesc();
+
+    @Query("select id from Clothes order by id desc limit 15")
+    public List<Clothes> findTopByOrderByIdDesc10();
 }

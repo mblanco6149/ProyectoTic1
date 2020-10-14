@@ -72,15 +72,6 @@ public class StartAppiController implements Initializable {
 
     private ObservableList<Clothes> clothes;
 
-
-    @FXML
-    private ImageView image1;
-    @FXML
-    private ImageView image2;
-    @FXML
-    private TextArea descriptionImage1;
-    @FXML
-    private VBox hola;
     @FXML
     private GridPane grid;
 
@@ -90,16 +81,15 @@ public class StartAppiController implements Initializable {
         clothes = FXCollections.observableArrayList(cls.getClothesRepo().findAll());
         agregarCLothes();
         Clothes cloth = cls.getByLastId();
-        image1.setImage(new Image(new ByteArrayInputStream(cls.getByLastId().getClothePicture()), 65, 60, true, true));
+        /*image1.setImage(new Image(new ByteArrayInputStream(cls.getByLastId().getClothePicture()), 65, 60, true, true));
         descriptionImage1.setText(cloth.toString());
         hola.getChildren().addAll(cloth.getPicture());
         hola.getChildren().add(descriptionImage1);
-
+        */
     }
 
     //Prueba
     public void agregarCLothes(){
-
         VBox prueba1 = new VBox();
         ImageView image1 = new ImageView();
         image1.setImage(new Image(new ByteArrayInputStream(cls.getByLastId().getClothePicture()), 65, 60, true, true));
@@ -107,8 +97,6 @@ public class StartAppiController implements Initializable {
         textArea.setText(cls.getByLastId().toString());
         prueba1.getChildren().add(image1);
         prueba1.getChildren().add(textArea);
-
-
     }
 
     public void login(javafx.event.ActionEvent actionEvent) throws IOException{
@@ -123,7 +111,7 @@ public class StartAppiController implements Initializable {
 
     public void carrito(javafx.event.ActionEvent actionEvent) throws IOException{
         if(bsi.carritoIsEmpty()){
-            
+
         }else{
             FXMLLoader fxmlLoader = new FXMLLoader(FacheritAppApplication.class.getResource("Carrito.fxml"));
             fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);

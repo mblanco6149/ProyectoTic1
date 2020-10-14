@@ -10,12 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 import tic1.grupo9.facheritApp.backend.services.AdminService;
 import tic1.grupo9.facheritApp.backend.services.BrandService;
 import tic1.grupo9.facheritApp.backend.services.ClientService;
 import tic1.grupo9.facheritApp.backend.services.LocalService;
+import tic1.grupo9.facheritApp.commons.entities.Admin;
+import tic1.grupo9.facheritApp.commons.entities.Client;
+import tic1.grupo9.facheritApp.commons.entities.User;
 
 
+@SpringBootTest
 public class FilingDatabaseTest {
 
 
@@ -30,11 +35,14 @@ public class FilingDatabaseTest {
 
     @Autowired
     LocalService ls;
+    
 
 
 
     @Before
     public void filling(){
+        User admin1 = new Admin("manub@gmail.com", "hola1234");
+        as.save(admin1);
 
     }
 
