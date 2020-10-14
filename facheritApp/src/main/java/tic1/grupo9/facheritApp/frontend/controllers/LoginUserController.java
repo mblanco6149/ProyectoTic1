@@ -56,6 +56,18 @@ public class LoginUserController implements Initializable {
         Client client = null;
         client = cs.findByEmail(email_textfield.getText());
 
+        if(client.getPassword().equals(password_textfield)){
+            FXMLLoader fxmlLoader = new FXMLLoader(FacheritAppApplication.class.getResource("startAppi.fxml"));
+            fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+            Scene tableViewScene = new Scene(fxmlLoader.load());
+
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            window.setScene(tableViewScene);
+            window.show();
+        }
+        else{}
+        //Mostrar un dialogo o textview que diga que la contrasena y/o usuario son incorrectas.
+
 
 
     }
