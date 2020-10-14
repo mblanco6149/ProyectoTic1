@@ -1,6 +1,7 @@
 package tic1.grupo9.facheritApp.backend.appi;
 
 import tic1.grupo9.facheritApp.commons.appi.BackendService;
+import tic1.grupo9.facheritApp.commons.entities.Client;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
 
 import java.util.ArrayList;
@@ -36,5 +37,11 @@ public class BackendServiceImp implements BackendService {
     @Override
     public void saveStock() {
 
+    }
+
+
+    public void createClient(String email, String password,String name, String surname,
+                             long phone, String address) {
+        Client client = new Client(email,password,name,surname,phone,address);
     }
 }

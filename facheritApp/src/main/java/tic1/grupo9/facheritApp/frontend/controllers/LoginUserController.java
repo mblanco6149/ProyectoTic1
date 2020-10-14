@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -48,6 +49,10 @@ public class LoginUserController implements Initializable {
     @FXML
     TextField email_textfield;
 
+    @FXML
+    Text login_error;
+
+
 
 
 
@@ -56,20 +61,31 @@ public class LoginUserController implements Initializable {
         Client client = null;
         client = cs.findByEmail(email_textfield.getText());
 
-        if(client.getPassword().equals(password_textfield)){
+        if(client!= null && client.getPassword().equals(password_textfield) ){
             FXMLLoader fxmlLoader = new FXMLLoader(FacheritAppApplication.class.getResource("startAppi.fxml"));
             fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
             Scene tableViewScene = new Scene(fxmlLoader.load());
 
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            tableViewScene.remove // remover el boton de login/register y poner Hola Manuel!
             window.setScene(tableViewScene);
             window.show();
         }
-        else{}
-        //Mostrar un dialogo o textview que diga que la contrasena y/o usuario son incorrectas.
+        else{
+            login_error.setText("El email o contraseña son incorrectos");
+            //Mostrar un text que diga que la contrasena y/o usuario son incorrectas.
 
+        }
+    }
 
+    public void register(javafx.event.ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(FacheritAppApplication.class.getResource("RegisterClient.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
 
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
 
