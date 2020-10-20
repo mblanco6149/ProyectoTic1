@@ -17,6 +17,9 @@ public class Local {
     protected String name;
 
     @Column
+    protected String password;
+
+    @Column
     @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable(
             name = "Local_Brand",

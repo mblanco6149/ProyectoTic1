@@ -16,6 +16,9 @@ public class Brand  {
     @Column
     protected String name;
 
+    @Column
+    protected String password;
+
     @ManyToMany (mappedBy = "brands")
     List<Local> locals;
 }
