@@ -67,7 +67,7 @@ public class LoginUserController implements Initializable {
             Scene tableViewScene = new Scene(fxmlLoader.load());
 
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            tableViewScene.remove // remover el boton de login/register y poner Hola Manuel!
+            // remover el boton de login/register en startAppi y poner Hola Manuel!
             window.setScene(tableViewScene);
             window.show();
         }

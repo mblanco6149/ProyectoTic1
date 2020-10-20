@@ -8,9 +8,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.LoginUserController">
    <children>
-      <Button layoutX="235.0" layoutY="358.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Register" />
+      <Button layoutX="235.0" layoutY="358.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="80.0" text="Register" />
       <Text layoutX="195.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No tienes usuario? Regístrate!" wrappingWidth="200.0" />
-      <Button layoutX="252.0" layoutY="247.0" mnemonicParsing="false" text="Login" />
+      <Button layoutX="252.0" layoutY="247.0" mnemonicParsing="false" onAction="#login" text="Login" />
       <Text layoutX="112.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password:">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -40,5 +40,6 @@
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
+      <Text fx:id="login_error" fill="RED" layoutX="163.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="231.0" />
    </children>
 </AnchorPane>

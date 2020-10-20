@@ -1,22 +1,14 @@
 package tic1.grupo9.facheritApp.backend.test;
 
-
-
+/*
 import org.junit.Before;
-
-
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import tic1.grupo9.facheritApp.backend.services.AdminService;
 import tic1.grupo9.facheritApp.backend.services.BrandService;
 import tic1.grupo9.facheritApp.backend.services.ClientService;
 import tic1.grupo9.facheritApp.backend.services.LocalService;
 import tic1.grupo9.facheritApp.commons.entities.Admin;
-import tic1.grupo9.facheritApp.commons.entities.Client;
 import tic1.grupo9.facheritApp.commons.entities.User;
 
 
@@ -47,4 +39,4 @@ public class FilingDatabaseTest {
     }
 
 
-}
+}*/

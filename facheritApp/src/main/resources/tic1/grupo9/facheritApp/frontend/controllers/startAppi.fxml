@@ -94,12 +94,12 @@
             </Text>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="9.0" stroke="TRANSPARENT" strokeType="INSIDE" width="169.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="127.0" />
-          <Button alignment="TOP_RIGHT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Carrito" textAlignment="CENTER" wrapText="true">
+          <Button fx:id="carrito_button" alignment="TOP_RIGHT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Carrito" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </Button>
-            <Button alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="136.0" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="login_button" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="136.0" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
