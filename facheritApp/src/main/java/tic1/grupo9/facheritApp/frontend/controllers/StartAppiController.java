@@ -2,7 +2,6 @@ package tic1.grupo9.facheritApp.frontend.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,18 +15,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import tic1.grupo9.facheritApp.backend.appi.BackendServiceImp;
 import tic1.grupo9.facheritApp.backend.services.*;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
-import tic1.grupo9.facheritApp.frontend.FacheritAppApplication;
+import tic1.grupo9.facheritApp.FacheritAppApplication;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;

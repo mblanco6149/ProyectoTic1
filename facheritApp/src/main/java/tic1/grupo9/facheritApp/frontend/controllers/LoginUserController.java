@@ -8,8 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import tic1.grupo9.facheritApp.backend.appi.BackendServiceImp;
 import tic1.grupo9.facheritApp.backend.services.AdminService;
@@ -17,18 +15,14 @@ import tic1.grupo9.facheritApp.backend.services.ClientService;
 import tic1.grupo9.facheritApp.backend.services.LocalService;
 import tic1.grupo9.facheritApp.commons.entities.Client;
 import tic1.grupo9.facheritApp.commons.exceptions.ClientNoExist;
-import tic1.grupo9.facheritApp.frontend.FacheritAppApplication;
+import tic1.grupo9.facheritApp.FacheritAppApplication;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static org.hibernate.hql.internal.antlr.SqlTokenTypes.FROM;
-import static org.hibernate.loader.Loader.SELECT;
-
 @Controller
-@EnableAutoConfiguration
 public class LoginUserController implements Initializable {
 
     @Autowired

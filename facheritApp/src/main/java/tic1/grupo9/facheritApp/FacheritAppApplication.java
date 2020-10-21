@@ -1,4 +1,4 @@
-package tic1.grupo9.facheritApp.frontend;
+package tic1.grupo9.facheritApp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +9,6 @@ import lombok.Getter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import tic1.grupo9.facheritApp.commons.entities.Admin;
-import tic1.grupo9.facheritApp.commons.entities.User;
 
 @SpringBootApplication
 public class FacheritAppApplication extends Application {
@@ -39,7 +37,7 @@ public class FacheritAppApplication extends Application {
 	public void start(Stage stage) throws Exception {
 		mainStage = stage;
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("controllers/startAppi.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("frontend/controllers/startAppi.fxml"));
 		loader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
 		rootNode = loader.load();
 
