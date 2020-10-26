@@ -17,7 +17,7 @@ import tic1.grupo9.facheritApp.commons.entities.Client;
 import tic1.grupo9.facheritApp.commons.exceptions.ClientNoExist;
 import tic1.grupo9.facheritApp.FacheritAppApplication;
 
-import java.awt.*;
+import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

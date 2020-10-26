@@ -99,7 +99,7 @@
                   <Font name="Arial" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="login_button" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="136.0" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
+            <Button alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="136.0" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>

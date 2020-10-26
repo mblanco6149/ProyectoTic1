@@ -38,7 +38,9 @@ public class FilingDatabaseTest {
         as.save(admin1);
 
 
-       /* Brand adidas = new Brand("Adidas",)*/
+        Brand adidas = new Brand("Adidas", "adidas123");
+        //Local local1 = new Local()
+
 
     }
 

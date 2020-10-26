@@ -62,8 +62,7 @@ public class StartAppiController implements Initializable {
 
     @FXML
     private Button carrito;
-    @FXML
-    private Button login;
+
 
     private ObservableList<Clothes> clothes;
 
@@ -94,8 +93,9 @@ public class StartAppiController implements Initializable {
         prueba1.getChildren().add(textArea);
     }
 
+    @FXML
     public void login(javafx.event.ActionEvent actionEvent) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(FacheritAppApplication.class.getResource("LoginUser.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginUserController.class.getResource("loginUser.fxml"));
         fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
         Scene tableViewScene = new Scene(fxmlLoader.load());
 
