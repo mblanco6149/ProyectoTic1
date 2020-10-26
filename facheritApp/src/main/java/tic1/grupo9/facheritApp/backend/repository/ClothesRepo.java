@@ -31,6 +31,6 @@ public interface ClothesRepo extends JpaRepository<Clothes,Integer> {
 
     public Clothes findTopByOrderByIdDesc();
 
-    @Query("select id from Clothes order by id desc limit 15")
-    public List<Clothes> findTopByOrderByIdDesc10();
+    /*@Query("select id from Clothes order by id desc limit 15")
+    public List<Clothes> findTopByOrderByIdDesc10();*/
 }

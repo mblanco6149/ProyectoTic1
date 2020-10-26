@@ -1,5 +1,7 @@
 package tic1.grupo9.facheritApp.commons.entities;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 import javax.persistence.Column;
@@ -8,11 +10,10 @@ import javax.persistence.Id;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
 public class Brand  {
 
     @Id
-    protected int id;
-
     @Column
     protected String name;
 
@@ -21,4 +22,15 @@ public class Brand  {
 
     @ManyToMany (mappedBy = "brands")
     List<Local> locals;
+
+    public Brand(String name, String password){
+        this.name=name;
+        this.password = password;
+    }
+
+    public void setLocals(List<Local> locals) {
+        this.locals = locals;
+    }
+
+
 }

@@ -8,6 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tic1.grupo9.facheritApp.backend.repository.AdminRepo;
 import tic1.grupo9.facheritApp.commons.entities.Admin;
+import tic1.grupo9.facheritApp.commons.entities.Brand;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 @Service
 @Data
@@ -24,5 +30,6 @@ public class AdminService {
     public AdminRepo getAdminRepo() {
         return adminRepo;
     }
+
 
 }

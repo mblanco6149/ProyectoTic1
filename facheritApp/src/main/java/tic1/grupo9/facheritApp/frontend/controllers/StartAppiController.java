@@ -73,9 +73,9 @@ public class StartAppiController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clothes = FXCollections.observableArrayList(cls.getClothesRepo().findAll());
-        agregarCLothes();
-        Clothes cloth = cls.getByLastId();
+        //clothes = FXCollections.observableArrayList(cls.getClothesRepo().findAll());
+       // agregarCLothes();
+        //Clothes cloth = cls.getByLastId();
         /*image1.setImage(new Image(new ByteArrayInputStream(cls.getByLastId().getClothePicture()), 65, 60, true, true));
         descriptionImage1.setText(cloth.toString());
         hola.getChildren().addAll(cloth.getPicture());

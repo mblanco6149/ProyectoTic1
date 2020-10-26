@@ -11,6 +11,7 @@ import java.util.List;
 public class Local {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
 
     @Column
