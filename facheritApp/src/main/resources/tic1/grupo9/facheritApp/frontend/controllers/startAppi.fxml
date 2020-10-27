@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -10,16 +11,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.StartAppiController">
+<AnchorPane prefHeight="665.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.StartAppiController">
    <children>
       <ScrollPane layoutY="69.0" prefHeight="331.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
          <content>
-            <GridPane fx:id="grid" gridLinesVisible="true" prefHeight="506.0" prefWidth="582.0">
+            <GridPane fx:id="grid" gridLinesVisible="true" prefHeight="900.0" prefWidth="920.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -35,76 +35,50 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <MenuBar prefHeight="29.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
-        <menus>
-          <Menu fx:id="menuHombre" mnemonicParsing="false" text="Hombre">
-            <items>
-                  <MenuItem mnemonicParsing="false" text="Todo" />
-                  <MenuItem mnemonicParsing="false" text="Jeans" />
-                  <MenuItem mnemonicParsing="false" text="Camperas" />
-                  <MenuItem mnemonicParsing="false" text="Canguros" />
-              <MenuItem mnemonicParsing="false" text="Camisas" />
-                  <MenuItem mnemonicParsing="false" text="Remeras" />
-                  <MenuItem mnemonicParsing="false" text="Calzado" />
-                  <MenuItem mnemonicParsing="false" text="Pantalones" />
-                  <MenuItem mnemonicParsing="false" text="Bermudas" />
-                  <MenuItem mnemonicParsing="false" text="Ropa Interior" />
-            </items>
-          </Menu>
-          <Menu fx:id="menuMujer" mnemonicParsing="false" text="Mujer">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Todo" />
-                  <MenuItem mnemonicParsing="false" text="Camperas" />
-                  <MenuItem mnemonicParsing="false" text="Buzos" />
-                  <MenuItem mnemonicParsing="false" text="Bluzas" />
-                  <MenuItem mnemonicParsing="false" text="Remeras" />
-                  <MenuItem mnemonicParsing="false" text="Tops" />
-                  <MenuItem mnemonicParsing="false" text="Vestidos" />
-                  <MenuItem mnemonicParsing="false" text="Calzado" />
-            </items>
-          </Menu>
-          <Menu fx:id="menuNiños" mnemonicParsing="false" text="Niños">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Buzos" />
-                  <MenuItem mnemonicParsing="false" text="Remeras" />
-                  <MenuItem mnemonicParsing="false" text="Camperas" />
-                  <MenuItem mnemonicParsing="false" text="Canguros" />
-                  <MenuItem mnemonicParsing="false" text="Pantalones" />
-                  <MenuItem mnemonicParsing="false" text="Jeans" />
-                  <MenuItem mnemonicParsing="false" text="Ropa Interior" />
-                  <MenuItem mnemonicParsing="false" text="Calzado" />
-            </items>
-          </Menu>
-            <Menu fx:id="local" mnemonicParsing="false" text="Local">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Todos" />
-              </items>
-            </Menu>
-        </menus>
-         <padding>
-            <Insets left="150.0" />
-         </padding>
-      </MenuBar>
-      <ToolBar prefHeight="40.0" prefWidth="600.0">
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="923.0">
         <items>
-            <Text fill="#1b1457" strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp" wrappingWidth="75.21875">
-               <font>
-                  <Font name="Futura Medium" size="13.0" />
-               </font>
-            </Text>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="9.0" stroke="TRANSPARENT" strokeType="INSIDE" width="169.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="127.0" />
-          <Button fx:id="carrito_button" alignment="TOP_RIGHT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Carrito" textAlignment="CENTER" wrapText="true">
+            <Button alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="136.0" style="-fx-alignment: right;" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </Button>
-            <Button alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="136.0" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
+          <Button fx:id="carrito_button" alignment="TOP_RIGHT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Carrito" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </Button>
         </items>
       </ToolBar>
+      <MenuBar prefHeight="30.0" prefWidth="923.0" AnchorPane.topAnchor="41.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Locales">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+         <padding>
+            <Insets left="515.0" />
+         </padding>
+      </MenuBar>
+      <HBox prefHeight="30.0" prefWidth="923.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <Hyperlink onAction="#hombre" prefHeight="23.0" prefWidth="398.0" text="Hombre" textFill="#161616">
+               <padding>
+                  <Insets left="350.0" top="5.0" />
+               </padding>
+            </Hyperlink>
+            <Hyperlink onAction="#mujer" prefWidth="54.0" text="Mujer" textFill="#090909">
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
+            </Hyperlink>
+            <Hyperlink onAction="#niños" text="Niños" textFill="#191818">
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
+            </Hyperlink>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

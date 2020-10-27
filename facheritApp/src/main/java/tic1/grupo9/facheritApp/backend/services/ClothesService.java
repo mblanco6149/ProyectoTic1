@@ -3,6 +3,7 @@ package tic1.grupo9.facheritApp.backend.services;
 import lombok.Data;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import tic1.grupo9.facheritApp.backend.repository.ClothesRepo;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
@@ -51,4 +52,8 @@ public class ClothesService {
     public Clothes getByLastId(){
         return clothesRepo.findTopByOrderByIdDesc();
     }
+
+    public List<Clothes> getByArrivals(){return clothesRepo.findAll(Sort.by(Sort.Direction.DESC, "id"));}
+
+
 }

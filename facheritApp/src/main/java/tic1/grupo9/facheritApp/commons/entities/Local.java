@@ -24,8 +24,8 @@ public class Local {
     @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable(
             name = "Local_Brand",
-            joinColumns = { @JoinColumn(name = "local_id") },
-            inverseJoinColumns = { @JoinColumn(name = "brand_id") }
+            joinColumns = { @JoinColumn(name = "id_local") },
+            inverseJoinColumns = { @JoinColumn(name = "brand_name") }
     )
     List<Brand> brands;
 

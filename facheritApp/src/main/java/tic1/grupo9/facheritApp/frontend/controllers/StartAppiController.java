@@ -51,18 +51,6 @@ public class StartAppiController implements Initializable {
     @Autowired
     BackendServiceImp bsi;
 
-    @FXML
-    private Menu menuHombre;
-    @FXML
-    private Menu menuMujer;
-    @FXML
-    private Menu menuNiños;
-    @FXML
-    private Menu local;
-
-    @FXML
-    private Button carrito;
-
 
     private ObservableList<Clothes> clothes;
 
@@ -84,6 +72,11 @@ public class StartAppiController implements Initializable {
 
     //Prueba
     public void agregarCLothes(){
+        /*for(int i=0; i<11; i++{
+            VBox content = new vBox
+            ImageView image1 = new ImageView();
+            cls.getByLastId()
+         })*/
         VBox prueba1 = new VBox();
         ImageView image1 = new ImageView();
         image1.setImage(new Image(new ByteArrayInputStream(cls.getByLastId().getClothePicture()), 65, 60, true, true));
@@ -96,6 +89,37 @@ public class StartAppiController implements Initializable {
     @FXML
     public void login(javafx.event.ActionEvent actionEvent) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(LoginUserController.class.getResource("loginUser.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    @FXML
+    public void hombre(javafx.event.ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(HombreController.class.getResource("hombre.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+    @FXML
+    public void mujer(javafx.event.ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(MujerController.class.getResource("mujer.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+    @FXML
+    public void niños(javafx.event.ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(NiñosController.class.getResource("niños.fxml"));
         fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
         Scene tableViewScene = new Scene(fxmlLoader.load());
 

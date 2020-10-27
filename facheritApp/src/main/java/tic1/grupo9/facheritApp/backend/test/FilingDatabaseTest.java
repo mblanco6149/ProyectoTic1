@@ -3,15 +3,8 @@ package tic1.grupo9.facheritApp.backend.test;
 
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
-import tic1.grupo9.facheritApp.backend.services.AdminService;
-import tic1.grupo9.facheritApp.backend.services.BrandService;
-import tic1.grupo9.facheritApp.backend.services.ClientService;
-import tic1.grupo9.facheritApp.backend.services.LocalService;
-import tic1.grupo9.facheritApp.commons.entities.Admin;
-import tic1.grupo9.facheritApp.commons.entities.Brand;
-import tic1.grupo9.facheritApp.commons.entities.Local;
-import tic1.grupo9.facheritApp.commons.entities.User;
-
+import tic1.grupo9.facheritApp.backend.services.*;
+import tic1.grupo9.facheritApp.commons.entities.*;
 
 
 public class FilingDatabaseTest {
@@ -29,7 +22,8 @@ public class FilingDatabaseTest {
     @Autowired
     LocalService ls;
     
-
+    @Autowired
+    ClothesService clothesService;
 
 
     @Before
@@ -39,7 +33,10 @@ public class FilingDatabaseTest {
 
 
         Brand adidas = new Brand("Adidas", "adidas123");
-        //Local local1 = new Local()
+        Local local1 = new Local();
+
+        //Clothes cloth1 = new Clothes()
+
 
 
     }
