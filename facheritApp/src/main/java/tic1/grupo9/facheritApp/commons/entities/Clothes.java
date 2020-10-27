@@ -48,6 +48,17 @@ public class Clothes {
     @Column
     private byte[] clothePicture;
 
+
+    public Clothes(String name, String type, double price, String color, String size, String gender, byte[] picture){
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.color = color;
+        this.size = size;
+        this.gender = gender;
+        this.clothePicture = picture;
+    }
+
     @Override
     public String toString() {
         return
