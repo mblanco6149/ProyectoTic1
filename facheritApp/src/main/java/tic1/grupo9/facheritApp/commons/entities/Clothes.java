@@ -69,16 +69,14 @@ public class Clothes {
     @Override
     public String toString() {
         return
-                "name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", price=" + price +
-                ", color='" + color + '\'' +
-                ", size='" + size + '\'' +
-                '}';
+                name + '\n' +
+                "price= $" + price +
+                "   color= " + color +
+                "   size= " + size  ;
     }
 
     public ImageView getPicture(){
-        return new ImageView(new Image(new ByteArrayInputStream(clothPicture), 65, 60, true, true));
+        return new ImageView(new Image(new ByteArrayInputStream(clothPicture), 140, 140, true, true));
     }
 
 

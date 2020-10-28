@@ -5,11 +5,15 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -55,32 +59,64 @@ public class StartAppiController implements Initializable {
     @FXML
     private GridPane grid;
 
-    //private ObservableList<Clothes> clothes;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //clothes = FXCollections.observableArrayList(cls.getClothesRepo().findAll());
         agregarCLothes();
 
     }
 
-    //Prueba
-    public void agregarCLothes(){
+
+    public void agregarCLothes() {
         List<Clothes> clothesToShow = cls.getClothesRepo().findAll();
-        System.out.println(clothesToShow.size());
+        int k = clothesToShow.size()-1;
+            for (int i = 0; i < 11; i++){
+                for (int j = 0; j < 3; j++) {
+                    if(k<0){
+                        return;
+                    }
+                    Clothes clothTemp = clothesToShow.get(k);
+                    if(clothTemp == null) {
+                        return;
+                    }
+                    VBox content = new VBox();
+                    content.setAlignment(Pos.CENTER);
+                    content.setPadding(new Insets(5, 0, 2, 0));
+                    ImageView image1 = clothTemp.getPicture();
+
+
+                    TextArea textArea = new TextArea();
+                    textArea.setText(cls.getByLastId().toString());
+                    content.getChildren().add(image1);
+                    content.getChildren().add(textArea);
+                    grid.add(content, j, i);
+                    k--;
+                }
+            }
+
+
+
+
+
+        /*
         for(Clothes clothTemp: clothesToShow){
+
             if(clothTemp==null){
 
             }
             VBox content = new VBox();
+            content.setAlignment(Pos.CENTER);
+            content.setPadding(new Insets(5, 0, 2, 0));
             ImageView image1 = clothTemp.getPicture();
-            //image1.setImage(new Image(new ByteArrayInputStream(clothTemp.getClothPicture()), 65, 60, true, true));
+
+
             TextArea textArea = new TextArea();
             textArea.setText(cls.getByLastId().toString());
             content.getChildren().add(image1);
             content.getChildren().add(textArea);
-
-         }
+            grid.add(content,1,1);
+         }*/
 
     }
 
