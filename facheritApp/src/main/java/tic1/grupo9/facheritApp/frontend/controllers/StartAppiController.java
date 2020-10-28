@@ -26,6 +26,7 @@ import tic1.grupo9.facheritApp.FacheritAppApplication;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -51,39 +52,36 @@ public class StartAppiController implements Initializable {
     @Autowired
     BackendServiceImp bsi;
 
-
-    private ObservableList<Clothes> clothes;
-
     @FXML
     private GridPane grid;
 
+    //private ObservableList<Clothes> clothes;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //clothes = FXCollections.observableArrayList(cls.getClothesRepo().findAll());
-       // agregarCLothes();
-        //Clothes cloth = cls.getByLastId();
-        /*image1.setImage(new Image(new ByteArrayInputStream(cls.getByLastId().getClothePicture()), 65, 60, true, true));
-        descriptionImage1.setText(cloth.toString());
-        hola.getChildren().addAll(cloth.getPicture());
-        hola.getChildren().add(descriptionImage1);
-        */
+        agregarCLothes();
+
     }
 
     //Prueba
     public void agregarCLothes(){
-        /*for(int i=0; i<11; i++{
-            VBox content = new vBox
-            ImageView image1 = new ImageView();
-            cls.getByLastId()
-         })*/
-        VBox prueba1 = new VBox();
-        ImageView image1 = new ImageView();
-        image1.setImage(new Image(new ByteArrayInputStream(cls.getByLastId().getClothePicture()), 65, 60, true, true));
-        TextArea textArea = new TextArea();
-        textArea.setText(cls.getByLastId().toString());
-        prueba1.getChildren().add(image1);
-        prueba1.getChildren().add(textArea);
+        List<Clothes> clothesToShow = cls.getClothesRepo().findAll();
+        System.out.println(clothesToShow.size());
+        for(Clothes clothTemp: clothesToShow){
+            if(clothTemp==null){
+
+            }
+            VBox content = new VBox();
+            ImageView image1 = clothTemp.getPicture();
+            //image1.setImage(new Image(new ByteArrayInputStream(clothTemp.getClothPicture()), 65, 60, true, true));
+            TextArea textArea = new TextArea();
+            textArea.setText(cls.getByLastId().toString());
+            content.getChildren().add(image1);
+            content.getChildren().add(textArea);
+
+         }
+
     }
 
     @FXML

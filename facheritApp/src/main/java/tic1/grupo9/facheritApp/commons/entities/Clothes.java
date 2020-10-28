@@ -9,11 +9,13 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 import java.io.ByteArrayInputStream;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Data
+@Table(name = "clothes")
 public class Clothes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,17 +48,22 @@ public class Clothes {
 
     @Lob
     @Column
-    private byte[] clothePicture;
+    private byte[] clothPicture;
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    protected Brand brand;
 
 
-    public Clothes(String name, String type, double price, String color, String size, String gender, byte[] picture){
+    public Clothes(String name, String type, double price, String color, String size, String gender, byte[] picture, Brand brand){
         this.name = name;
         this.type = type;
         this.price = price;
         this.color = color;
         this.size = size;
         this.gender = gender;
-        this.clothePicture = picture;
+        this.clothPicture = picture;
+        this.brand = brand;
     }
 
     @Override
@@ -71,7 +78,7 @@ public class Clothes {
     }
 
     public ImageView getPicture(){
-        return new ImageView(new Image(new ByteArrayInputStream(clothePicture), 65, 60, true, true));
+        return new ImageView(new Image(new ByteArrayInputStream(clothPicture), 65, 60, true, true));
     }
 
 

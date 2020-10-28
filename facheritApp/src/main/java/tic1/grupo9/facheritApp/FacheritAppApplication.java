@@ -10,7 +10,7 @@ import lombok.Getter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-@Data
+
 @SpringBootApplication
 public class FacheritAppApplication extends Application {
 
@@ -46,5 +46,7 @@ public class FacheritAppApplication extends Application {
 		stage.show();
 	}
 
-
+	public void stop() throws Exception{
+		appiContext.close();
+	}
 }
