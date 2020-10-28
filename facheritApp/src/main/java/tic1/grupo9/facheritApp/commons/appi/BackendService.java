@@ -1,7 +1,8 @@
 package tic1.grupo9.facheritApp.commons.appi;
 
-import java.rmi.Remote;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public interface BackendService  {
 
     void saveNewBrand();

@@ -13,7 +13,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="665.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.StartAppiController">
    <children>
@@ -42,11 +44,13 @@
                   <Font name="Arial" size="13.0" />
                </font>
             </Button>
-          <Button fx:id="carrito_button" alignment="TOP_RIGHT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Carrito" textAlignment="CENTER" wrapText="true">
+          <Button fx:id="carrito_button" alignment="TOP_RIGHT" contentDisplay="TOP" mnemonicParsing="false" onAction="#carrito" prefHeight="26.0" prefWidth="58.0" text="Carrito" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="12.0" smooth="false" stroke="#00000001" strokeType="INSIDE" width="562.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp-Home" wrappingWidth="133.97216796875" />
         </items>
       </ToolBar>
       <MenuBar prefHeight="30.0" prefWidth="923.0" AnchorPane.topAnchor="41.0">

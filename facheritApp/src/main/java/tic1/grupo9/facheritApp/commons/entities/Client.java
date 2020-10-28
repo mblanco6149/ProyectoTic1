@@ -30,4 +30,6 @@ public class Client extends User {
         super(email, password);
     }
 
+
+
 }

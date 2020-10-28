@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +14,24 @@ import tic1.grupo9.facheritApp.backend.appi.BackendServiceImp;
 import tic1.grupo9.facheritApp.backend.services.AdminService;
 import tic1.grupo9.facheritApp.backend.services.ClientService;
 import tic1.grupo9.facheritApp.backend.services.LocalService;
+import tic1.grupo9.facheritApp.backend.services.UserService;
 import tic1.grupo9.facheritApp.commons.entities.Client;
+import tic1.grupo9.facheritApp.commons.entities.User;
 import tic1.grupo9.facheritApp.commons.exceptions.ClientNoExist;
 import tic1.grupo9.facheritApp.FacheritAppApplication;
 
 import javafx.scene.control.TextField;
+import tic1.grupo9.facheritApp.commons.exceptions.NoUserFound;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 @Controller
 public class LoginUserController implements Initializable {
+
+    @Autowired
+    UserService us;
 
     @Autowired
     AdminService as;
@@ -38,7 +46,7 @@ public class LoginUserController implements Initializable {
     BackendServiceImp bsi;
 
     @FXML
-    TextField password_textfield;
+    PasswordField password_textfield;
 
     @FXML
     TextField email_textfield;
@@ -50,13 +58,15 @@ public class LoginUserController implements Initializable {
 
 
 
+    @FXML
+    public void login(javafx.event.ActionEvent actionEvent) throws IOException, ClientNoExist, NoUserFound {
+        User userTemp = new User(email_textfield.getText(),password_textfield.getText());
 
-    public void login(javafx.event.ActionEvent actionEvent) throws IOException, ClientNoExist {
-        Client client = null;
-        client = cs.findByEmail(email_textfield.getText());
+        User user = us.findByEmail(email_textfield.getText());
 
-        if(client!= null && client.getPassword().equals(password_textfield) ){
-            FXMLLoader fxmlLoader = new FXMLLoader(FacheritAppApplication.class.getResource("startAppi.fxml"));
+
+        if(user!=null && user.equals(userTemp) ){
+            FXMLLoader fxmlLoader = new FXMLLoader(StartAppiController.class.getResource("startAppi.fxml"));
             fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
             Scene tableViewScene = new Scene(fxmlLoader.load());
 
@@ -72,8 +82,19 @@ public class LoginUserController implements Initializable {
         }
     }
 
+    @FXML
+    public void home(javafx.event.ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(StartAppiController.class.getResource("startAppi.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+    @FXML
     public void register(javafx.event.ActionEvent actionEvent) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(FacheritAppApplication.class.getResource("RegisterClient.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RegisterClientController.class.getResource("RegisterClient.fxml"));
         fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
         Scene tableViewScene = new Scene(fxmlLoader.load());
 

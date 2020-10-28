@@ -86,10 +86,10 @@ public class StartAppiController implements Initializable {
                     ImageView image1 = clothTemp.getPicture();
 
 
-                    TextArea textArea = new TextArea();
-                    textArea.setText(cls.getByLastId().toString());
+                    Text text = new Text();
+                    text.setText(clothTemp.toString());
                     content.getChildren().add(image1);
-                    content.getChildren().add(textArea);
+                    content.getChildren().add(text);
                     grid.add(content, j, i);
                     k--;
                 }
@@ -130,6 +130,7 @@ public class StartAppiController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
     }
+
 
     @FXML
     public void hombre(javafx.event.ActionEvent actionEvent) throws IOException{

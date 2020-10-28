@@ -24,9 +24,7 @@ public class UserService {
 
     public User findByEmail(String email) throws NoUserFound {
         User user = userRepo.findOneByEmail(email);
-        if(user == null){
-            throw new NoUserFound();
-        }
+
         return user;
     }
 

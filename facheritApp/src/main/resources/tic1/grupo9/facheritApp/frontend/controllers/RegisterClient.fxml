@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.LoginUsuer">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.RegisterClientController">
    <children>
-      <Button layoutX="235.0" layoutY="358.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Register" />
-      <Text layoutX="110.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password:">
+      <Button layoutX="235.0" layoutY="358.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="80.0" text="Register" />
+      <Text layoutX="108.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -21,24 +22,19 @@
       </Text>
       <AnchorPane prefHeight="38.0" prefWidth="600.0" style="-fx-background-color: bfb3b2;">
          <children>
-            <Text layoutX="26.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp-Register" wrappingWidth="242.39996337890625">
+            <Text layoutX="23.0" layoutY="24.0" onMouseClicked="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp-Register" wrappingWidth="149.0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <TextField layoutX="211.0" layoutY="138.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" text="Enter email...">
+      <TextField fx:id="txtEmail" layoutX="211.0" layoutY="138.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter email..">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <TextField layoutX="212.0" layoutY="180.0" opacity="0.55" text="Enter password...">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="211.0" layoutY="55.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" text="Enter name...">
+      <TextField fx:id="txtName" layoutX="211.0" layoutY="55.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter name..">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
@@ -48,7 +44,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <TextField layoutX="211.0" layoutY="99.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" text="Enter surname...">
+      <TextField fx:id="txtSurname" layoutX="211.0" layoutY="99.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter surname..">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
@@ -58,25 +54,36 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <TextField layoutX="210.0" layoutY="222.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" text="Enter address...">
+      <TextField fx:id="txtAddress" layoutX="211.0" layoutY="263.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter address..">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <Text layoutX="109.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="address:" wrappingWidth="139.7366943359375">
+      <Text layoutX="109.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="address:" wrappingWidth="139.7366943359375">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <TextField layoutX="210.0" layoutY="266.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" text="Enter phone...">
+      <TextField fx:id="txtPhone" layoutX="211.0" layoutY="303.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter phone..">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <Text layoutX="109.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="phone number:" wrappingWidth="139.7366943359375">
+      <Text layoutX="109.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="phone number:" wrappingWidth="139.7366943359375">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
+      <PasswordField fx:id="txtPassword" layoutX="211.0" layoutY="179.0" opacity="0.55" prefHeight="27.0" prefWidth="149.0" promptText="Enter password..">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </PasswordField>
+      <PasswordField fx:id="txtPassword2" layoutX="211.0" layoutY="221.0" opacity="0.55" prefHeight="27.0" prefWidth="149.0" promptText="Confirm password..">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </PasswordField>
+      <Text fx:id="passwordtxt" fill="#ff000000" layoutX="371.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="221.0" />
    </children>
 </AnchorPane>
