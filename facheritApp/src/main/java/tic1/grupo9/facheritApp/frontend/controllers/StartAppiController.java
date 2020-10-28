@@ -10,10 +10,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -86,10 +83,10 @@ public class StartAppiController implements Initializable {
                     ImageView image1 = clothTemp.getPicture();
 
 
-                    Text text = new Text();
-                    text.setText(clothTemp.toString());
+                    Label textArea = new Label();
+                    textArea.setText(clothTemp.toString());
                     content.getChildren().add(image1);
-                    content.getChildren().add(text);
+                    content.getChildren().add(textArea);
                     grid.add(content, j, i);
                     k--;
                 }
