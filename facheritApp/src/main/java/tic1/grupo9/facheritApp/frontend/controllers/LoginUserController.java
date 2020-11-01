@@ -65,7 +65,7 @@ public class LoginUserController implements Initializable {
         User user = us.findByEmail(email_textfield.getText());
 
 
-        if(user!=null && user.equals(userTemp) ){
+        if(user!=null && user.getPassword().equals(userTemp.getPassword()) ){
             FXMLLoader fxmlLoader = new FXMLLoader(StartAppiController.class.getResource("startAppi.fxml"));
             fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
             Scene tableViewScene = new Scene(fxmlLoader.load());
