@@ -66,15 +66,15 @@ public class RegisterClientController implements Initializable {
 
     @FXML
     public void register(javafx.event.ActionEvent actionEvent) throws Throwable {
+        Boolean alreadyExists = cs.clientExist(txtEmail.getText());
 
-        Client client = cs.findByEmail(txtEmail.getText());
-        if (client!=null){
+        Client cliente = new Client(txtEmail.getText(),txtPassword.getText(),txtName.getText(),txtSurname.getText(),Long.parseLong(txtPhone.getText()),txtAddress.getText());
+        if (alreadyExists){
              throw new Throwable("Email ya registrado");
         }
         if(!(txtPassword.getText().equals(txtPassword2.getText()))){
             passwordtxt.setText("Las contraseñas no coinciden.");
         }else{
-            Client cliente = new Client(txtEmail.getText(),txtPassword.getText(),txtName.getText(),txtSurname.getText(),Long.parseLong(txtPhone.getText()),txtAddress.getText());
 
             cs.save(cliente);
 
