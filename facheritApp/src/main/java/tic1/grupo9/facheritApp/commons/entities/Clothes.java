@@ -34,13 +34,15 @@ public class Clothes {
     @NonNull
     protected double price;
 
-    @Column
-    @NonNull
-    protected String color;
 
-    @Column
     @NonNull
-    protected String size;
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "clothes")
+    protected List<Colour> color;
+
+
+    @NonNull
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "clothes_size")
+    protected List<Size> size;
 
     @Column
     @NonNull
@@ -54,8 +56,10 @@ public class Clothes {
     @JoinColumn(name = "brand_id")
     protected Brand brand;
 
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "clothes")
+    protected List<Stock> stocks;
 
-    public Clothes(String name, String type, double price, String color, String size, String gender, byte[] picture, Brand brand){
+    public Clothes(String name, String type, double price, List<Colour> color, List<Size> size, String gender, byte[] picture, Brand brand){
         this.name = name;
         this.type = type;
         this.price = price;

@@ -60,7 +60,7 @@ public class StartAppiController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        agregarCLothes();
+        //agregarCLothes();
 
     }
 

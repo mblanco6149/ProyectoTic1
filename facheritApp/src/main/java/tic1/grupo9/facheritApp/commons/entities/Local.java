@@ -20,14 +20,20 @@ public class Local {
     @Column
     protected String password;
 
-    @Column
+
     @ManyToMany (cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "Local_Brand",
-            joinColumns = { @JoinColumn(name = "id_local") },
-            inverseJoinColumns = { @JoinColumn(name = "brand_name") }
+            @JoinTable(
+                    name = "local_brand",
+                    joinColumns = @JoinColumn(name = "local_id"),
+                    inverseJoinColumns = @JoinColumn(name = "brand_id")
     )
     List<Brand> brands;
+
+    @Column
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "locals")
+    List<Stock> stock;
+
+
 
 
 }

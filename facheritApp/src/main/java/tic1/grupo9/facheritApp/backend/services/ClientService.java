@@ -20,11 +20,8 @@ public class ClientService  {
     }
 
     public Client findByEmail(String email) throws ClientNoExist{
-        Client client = clientRepo.getOne(email);
-        if(client==null){
-            throw new ClientNoExist();
-        }
-        return client;
+        return  clientRepo.getOne(email);
+
     }
 
     public boolean clientExist(String email){

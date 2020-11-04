@@ -21,7 +21,7 @@ public class Brand  {
     protected String password;
 
     @ManyToMany (mappedBy = "brands")
-    private List<Local> locals;
+    private List<Local> locales;
 
     @OneToMany(mappedBy = "brand")
     private List<Clothes> clothes;
@@ -32,7 +32,7 @@ public class Brand  {
     }
 
     public void setLocals(List<Local> locals) {
-        this.locals = locals;
+        this.locales = locals;
     }
 
 
