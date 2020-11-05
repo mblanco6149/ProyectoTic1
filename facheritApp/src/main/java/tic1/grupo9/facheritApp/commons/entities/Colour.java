@@ -19,4 +19,18 @@ public class Colour {
     @ManyToOne
     @JoinColumn(name = "clothes_id")
     protected Clothes clothes;
+
+
+    public Colour(String color){
+        colours = color;
+    }
+
+    @Override
+    public String toString() {
+        return colours ;
+    }
+
+    public void setClothes(Clothes clothes) {
+        this.clothes = clothes;
+    }
 }

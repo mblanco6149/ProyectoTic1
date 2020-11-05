@@ -70,13 +70,30 @@ public class Clothes {
         this.brand = brand;
     }
 
+    public String toStringGetColor(){
+        String colours = null;
+        System.out.println(color);
+        for(int i = 0; i< color.size(); i++){
+            colours += color.get(i).toString() + ", ";
+        }
+        return colours;
+    }
+
+    public  String toStringGetSizes(){
+        String sizes = null;
+        for(int i = 0; i< size.size(); i++){
+            sizes += size.get(i).toString() + ", ";
+        }
+        return sizes;
+    }
+
     @Override
     public String toString() {
         return
                 name + '\n' +
                 "price= $" + price +
-                "   color= " + color +
-                "   size= " + size  ;
+                "   colours= " + toStringGetColor() +
+                "   size= " + toStringGetSizes()  ;
     }
 
     public ImageView getPicture(){
