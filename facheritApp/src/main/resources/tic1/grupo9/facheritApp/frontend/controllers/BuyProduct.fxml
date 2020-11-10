@@ -18,7 +18,9 @@
       <ChoiceBox fx:id="chooseSize" layoutX="393.0" layoutY="274.0" prefWidth="150.0" />
       <Text layoutX="393.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select colour" wrappingWidth="121.8031005859375" />
       <Text layoutX="393.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select size" wrappingWidth="121.8031005859375" />
-      <Button fx:id="buyButton" layoutX="428.0" layoutY="314.0" mnemonicParsing="false" onAction="#buy" text="Buy" />
+      <Button fx:id="buyButton" layoutX="447.0" layoutY="317.0" mnemonicParsing="false" onAction="#buy" text="Buy" />
       <Text layoutX="382.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.93670654296875" />
+      <Text fx:id="message" fill="RED" layoutX="350.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="235.8031005859375" />
+      <Button layoutX="527.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome" text="Home" />
    </children>
 </AnchorPane>

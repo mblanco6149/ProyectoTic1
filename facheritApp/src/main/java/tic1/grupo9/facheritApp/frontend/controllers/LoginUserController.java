@@ -75,6 +75,14 @@ public class LoginUserController implements Initializable {
             window.setScene(tableViewScene);
             window.show();
         }
+        if(email_textfield.getText().equals("admin") && password_textfield.getText().equals("facheritapp2020")) {
+            FXMLLoader fxmlloader = new FXMLLoader(AdminController.class.getResource("Admin.fxml"));
+            fxmlloader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+            Scene tableViewScene = new Scene(fxmlloader.load());
+            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            window.setScene(tableViewScene);
+            window.show();
+        }
         else{
             login_error.setText("El email o contraseña son incorrectos");
             //Mostrar un text que diga que la contrasena y/o usuario son incorrectas.

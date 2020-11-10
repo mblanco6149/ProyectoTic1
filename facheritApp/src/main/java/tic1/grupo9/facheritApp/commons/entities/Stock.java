@@ -1,6 +1,7 @@
 package tic1.grupo9.facheritApp.commons.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Stock {
 
     @Id

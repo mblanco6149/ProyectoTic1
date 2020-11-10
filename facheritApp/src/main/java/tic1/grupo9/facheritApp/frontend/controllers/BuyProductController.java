@@ -3,6 +3,7 @@ package tic1.grupo9.facheritApp.frontend.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -23,13 +24,16 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import tic1.grupo9.facheritApp.FacheritAppApplication;
 import tic1.grupo9.facheritApp.backend.appi.BackendServiceImp;
 import tic1.grupo9.facheritApp.backend.services.*;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
 import tic1.grupo9.facheritApp.commons.entities.Colour;
 import tic1.grupo9.facheritApp.commons.entities.Size;
+import tic1.grupo9.facheritApp.commons.entities.Stock;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +54,9 @@ public class BuyProductController implements Initializable {
 
     @Autowired
     LocalService ls;
+
+    @Autowired
+    StockService ss;
 
     @Autowired
     BrandService bs;
@@ -73,6 +80,9 @@ public class BuyProductController implements Initializable {
 
     @FXML
     Button buyButton;
+
+    @FXML
+    Text message;
 
 
     public Clothes getClothes() {
@@ -114,7 +124,36 @@ public class BuyProductController implements Initializable {
 
     }
 
+    @FXML
     public  void buy(javafx.event.ActionEvent actionEvent){
-        buyButton.setText("thanks");
+        String color = chooseColour.getSelectionModel().getSelectedItem();
+        String size = chooseSize.getSelectionModel().getSelectedItem();
+        List<Stock> stocks = ss.getStockRepo().findByClothes(clothes);
+
+        for(int i = 0; i<stocks.size(); i++){
+            Stock stock = stocks.get(i);
+            if(stock.getColor().equals(color) && stock.getSize().equals(size)){
+                if(stock.getQuantity()>0){
+                    stock.setQuantity((stock.getQuantity()-1));
+                    buyButton.setText("thanks");
+                    message.setText("Your purchase was succesful.");
+                } else{
+                    message.setText("No stock available.");
+                }
+            } else{
+                message.setText("No stock found for selected size and color.");
+            }
+        }
+    }
+
+    @FXML
+    public void goHome(javafx.event.ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(StartAppiController.class.getResource("startAppi.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 }

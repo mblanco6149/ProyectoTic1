@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="326.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.LoginUsuer">
+<AnchorPane prefHeight="326.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.AdminController">
    <children>
       <Button layoutX="26.0" layoutY="138.0" mnemonicParsing="false" onAction="#createBrand" prefHeight="50.0" prefWidth="148.0" text="BRAND" />
       <AnchorPane prefHeight="38.0" prefWidth="600.0" style="-fx-background-color: bfb3b2;">
