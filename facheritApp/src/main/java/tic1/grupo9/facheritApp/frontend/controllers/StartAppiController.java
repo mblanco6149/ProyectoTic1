@@ -2,6 +2,8 @@ package tic1.grupo9.facheritApp.frontend.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -53,6 +55,9 @@ public class StartAppiController implements Initializable {
     @Autowired
     BackendServiceImp bsi;
 
+    @Autowired
+    BuyProductController bpc;
+
     @FXML
     private GridPane grid;
 
@@ -83,10 +88,27 @@ public class StartAppiController implements Initializable {
                     ImageView image1 = clothTemp.getPicture();
 
 
+                    Button buyButton = new Button("Buy");
                     Label textArea = new Label();
                     textArea.setText(clothTemp.toString());
                     content.getChildren().add(image1);
                     content.getChildren().add(textArea);
+                    content.getChildren().add(buyButton);
+
+                    int a=k;
+
+                    buyButton.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override public void handle(ActionEvent e) {
+
+                            try {
+                                buy(a,e);
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+
+                        }
+                    });
+
                     grid.add(content, j, i);
                     k--;
                 }
@@ -117,7 +139,25 @@ public class StartAppiController implements Initializable {
 
     }
 
-    @FXML
+
+    public void buy(int i,javafx.event.ActionEvent actionEvent) throws IOException {
+
+        List<Clothes> clothesToShow = cls.getClothesRepo().findAll();
+        Clothes clothes = clothesToShow.get(i);
+        bpc.setClothes(clothes);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(BuyProductController.class.getResource("BuyProduct.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+
+
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(tableViewScene);
+        window.show();
+    }
+        @FXML
     public void login(javafx.event.ActionEvent actionEvent) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(LoginUserController.class.getResource("loginUser.fxml"));
         fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);

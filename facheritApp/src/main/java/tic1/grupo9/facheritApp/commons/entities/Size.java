@@ -17,7 +17,7 @@ public class Size {
     @Column
     private String sizes;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "clothes_id")
     protected Clothes clothes_size;
 
@@ -32,5 +32,13 @@ public class Size {
 
     public void setClothes_size(Clothes clothes_size) {
         this.clothes_size = clothes_size;
+    }
+
+    public String getSizes() {
+        return sizes;
+    }
+
+    public void setSizes(String sizes) {
+        this.sizes = sizes;
     }
 }

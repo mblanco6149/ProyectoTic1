@@ -16,7 +16,7 @@ public class Colour {
     protected Integer id;
     @Column
     private String colours;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "clothes_id")
     protected Clothes clothes;
 
@@ -32,5 +32,13 @@ public class Colour {
 
     public void setClothes(Clothes clothes) {
         this.clothes = clothes;
+    }
+
+    public String getColours() {
+        return colours;
+    }
+
+    public void setColours(String colours) {
+        this.colours = colours;
     }
 }

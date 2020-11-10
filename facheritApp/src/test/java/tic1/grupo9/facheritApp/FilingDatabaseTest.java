@@ -35,6 +35,12 @@ public class FilingDatabaseTest {
 
     @Autowired
     LocalService ls;
+
+    @Autowired
+    ColourService cols;
+
+    @Autowired
+    SizeService sr;
     
     @Autowired
     ClothesService clothesService;
@@ -43,11 +49,11 @@ public class FilingDatabaseTest {
     @Before
     public void filling() throws IOException, URISyntaxException {
         Admin admin1 = new Admin("manub@gmail.com", "hola1234");
-        as.save(admin1);
+        //as.save(admin1);
 
 
         Brand adidas = new Brand("Adidas", "adidas123");
-        bs.save(adidas);
+        //bs.save(adidas);
         //Local local1 = new Local();
 
 
@@ -62,9 +68,26 @@ public class FilingDatabaseTest {
         java.util.List<Colour> myListColor = new LinkedList<Colour>();
         myListColor.add(color1);myListColor.add(color2);myListColor.add(color3);
         Clothes cloth1 = new Clothes("Pantalon slim", "pantalon", 20, myListColor, myListSize, "Masculino", bytePant, adidas);
-        clothesService.save(cloth1);
+
         color1.setClothes(cloth1);color2.setClothes(cloth1);color3.setClothes(cloth1);
         m.setClothes_size(cloth1);s.setClothes_size(cloth1);l.setClothes_size(cloth1);xl.setClothes_size(cloth1);
+        cloth1.getColor().add(color1);
+        cloth1.getColor().add(color2);
+        cloth1.getColor().add(color3);
+
+        cloth1.getSize().add(m);
+        cloth1.getSize().add(l);
+        cloth1.getSize().add(s);
+        cloth1.getSize().add(xl);
+        clothesService.save(cloth1);
+        cols.save(color1);
+        cols.save(color2);
+        cols.save(color3);
+
+        sr.save(m);
+        sr.save(s);
+        sr.save(l);
+        sr.save(xl);
 
     }
 

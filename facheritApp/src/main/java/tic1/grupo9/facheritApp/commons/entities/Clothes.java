@@ -10,6 +10,7 @@ import lombok.NonNull;
 import javax.persistence.*;
 import java.io.ByteArrayInputStream;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,13 +37,13 @@ public class Clothes {
 
 
     @NonNull
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "clothes")
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "clothes",fetch = FetchType.EAGER)
     protected List<Colour> color;
 
 
     @NonNull
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "clothes_size")
-    protected List<Size> size;
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "clothes_size",fetch = FetchType.EAGER)
+    protected Set<Size> size;
 
     @Column
     @NonNull
@@ -59,7 +60,7 @@ public class Clothes {
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "clothes")
     protected List<Stock> stocks;
 
-    public Clothes(String name, String type, double price, List<Colour> color, List<Size> size, String gender, byte[] picture, Brand brand){
+    public Clothes(String name, String type, double price, List<Colour> color, Set<Size> size, String gender, byte[] picture, Brand brand){
         this.name = name;
         this.type = type;
         this.price = price;
@@ -79,26 +80,74 @@ public class Clothes {
         return colours;
     }
 
-    public  String toStringGetSizes(){
-        String sizes = null;
-        for(int i = 0; i< size.size(); i++){
-            sizes += size.get(i).toString() + ", ";
-        }
-        return sizes;
-    }
+
 
     @Override
     public String toString() {
         return
                 name + '\n' +
-                "price= $" + price +
-                "   colours= " + toStringGetColor() +
-                "   size= " + toStringGetSizes()  ;
+                "price= $" + price ;
+               // "   colours= " + toStringGetColor() +
+                //"   size= " + toStringGetSizes()  ;
     }
 
     public ImageView getPicture(){
         return new ImageView(new Image(new ByteArrayInputStream(clothPicture), 140, 140, true, true));
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public List<Colour> getColor() {
+        return color;
+    }
+
+    public void setColor(List<Colour> color) {
+        this.color = color;
+    }
+
+    public Set<Size> getSize() {
+        return size;
+    }
+
+    public void setSize(Set<Size> size) {
+        this.size = size;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public byte[] getClothPicture() {
+        return clothPicture;
+    }
+
+    public void setClothPicture(byte[] clothPicture) {
+        this.clothPicture = clothPicture;
+    }
 }
