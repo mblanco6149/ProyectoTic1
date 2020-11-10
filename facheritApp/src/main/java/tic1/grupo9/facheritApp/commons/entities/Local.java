@@ -2,12 +2,14 @@ package tic1.grupo9.facheritApp.commons.entities;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Local {
 
     @Id
@@ -32,6 +34,11 @@ public class Local {
     @Column
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "locals")
     List<Stock> stock;
+
+
+    public Local (String name, String password, List<Brand> brandList){
+        this.name = name;this.password = password;this.brands = brandList;
+    }
 
 
 

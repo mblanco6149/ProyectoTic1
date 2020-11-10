@@ -31,4 +31,7 @@ public class Stock {
     @Column
     protected String color;
 
+    public Stock(Clothes clothes, Local local, Integer quantity , String size, String color){
+        this.color=color;this.clothes=clothes;this.locals=local;this.quantity=quantity;this.size=size;
+    }
 }
