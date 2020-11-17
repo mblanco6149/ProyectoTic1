@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
+@Data
 @Controller
 @EnableAutoConfiguration
 public class StartAppiController implements Initializable {
@@ -59,6 +60,10 @@ public class StartAppiController implements Initializable {
     BuyProductController bpc;
 
     @FXML
+    private Button ingresar_reg_button;
+
+
+    @FXML
     private GridPane grid;
 
     
@@ -66,6 +71,11 @@ public class StartAppiController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         agregarCLothes();
+
+    }
+
+    public void changeLoginButton(String user_name){
+        ingresar_reg_button.setText("Hola " + user_name + "!");
 
     }
 

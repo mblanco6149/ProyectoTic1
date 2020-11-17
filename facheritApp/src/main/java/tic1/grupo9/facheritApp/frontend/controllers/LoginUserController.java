@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -45,6 +46,9 @@ public class LoginUserController implements Initializable {
     @Autowired
     BackendServiceImp bsi;
 
+    @Autowired
+    StartAppiController startAppiController;
+
     @FXML
     PasswordField password_textfield;
 
@@ -70,10 +74,14 @@ public class LoginUserController implements Initializable {
             fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
             Scene tableViewScene = new Scene(fxmlLoader.load());
 
+
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            // remover el boton de login/register en startAppi y poner Hola Manuel!
             window.setScene(tableViewScene);
             window.show();
+
+            // remover el boton de login/register en startAppi y poner Hola Manuel!
+            Client client = cs.findByEmail(email_textfield.getText());
+            startAppiController.changeLoginButton(client.getFirstName());
         }
         if(email_textfield.getText().equals("admin") && password_textfield.getText().equals("facheritapp2020")) {
             FXMLLoader fxmlloader = new FXMLLoader(AdminController.class.getResource("Admin.fxml"));

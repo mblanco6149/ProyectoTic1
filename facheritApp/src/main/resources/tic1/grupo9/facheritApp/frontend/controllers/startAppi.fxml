@@ -37,9 +37,9 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="923.0">
+      <ToolBar fx:id="login_button" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="923.0">
         <items>
-            <Button alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="136.0" style="-fx-alignment: right;" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="ingresar_reg_button" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="136.0" style="-fx-alignment: right;" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
