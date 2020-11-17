@@ -46,6 +46,9 @@ public class RegisterClientController implements Initializable {
     @Autowired
     BackendServiceImp bsi;
 
+    @Autowired
+    StartAppiController startAppiController;
+
     @FXML
     private TextField txtName;
     @FXML
@@ -77,6 +80,7 @@ public class RegisterClientController implements Initializable {
         }else{
 
             cs.save(cliente);
+            startAppiController.changeLoginButton(cliente.getFirstName());
 
             FXMLLoader fxmlLoader = new FXMLLoader(StartAppiController.class.getResource("startAppi.fxml"));
             fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
