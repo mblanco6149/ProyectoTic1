@@ -84,5 +84,8 @@
             </Hyperlink>
          </children>
       </HBox>
+       <Button fx:id="nextButton" layoutX="916.0" layoutY="677.0" mnemonicParsing="false" onAction="#next" text="Next" />
+       <Button fx:id="backButton" layoutX="0.0" layoutY="677.0" mnemonicParsing="false" onAction="#back" text="Back" />
+
    </children>
 </AnchorPane>

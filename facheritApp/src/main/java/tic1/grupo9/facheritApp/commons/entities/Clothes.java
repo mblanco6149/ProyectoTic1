@@ -85,8 +85,8 @@ public class Clothes {
     @Override
     public String toString() {
         return
-                name + '\n' +
-                "price= $" + price ;
+                name + ", price= $" + price  ;
+                //"price= $" + price ;
                // "   colours= " + toStringGetColor() +
                 //"   size= " + toStringGetSizes()  ;
     }
@@ -149,5 +149,17 @@ public class Clothes {
 
     public void setClothPicture(byte[] clothPicture) {
         this.clothPicture = clothPicture;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Brand getBrand() {
+        return brand;
     }
 }

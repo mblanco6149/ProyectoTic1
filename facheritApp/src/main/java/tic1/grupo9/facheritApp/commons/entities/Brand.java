@@ -20,8 +20,15 @@ public class Brand  {
     @Column
     protected String password;
 
-    @ManyToMany (mappedBy = "brands")
-    private List<Local> locales;
+   /* @ManyToMany (mappedBy = "brands")
+    private List<Local> locals;*/
+    @ManyToMany (cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "local_brand",
+            joinColumns = {@JoinColumn(name = "brand_id")},
+            inverseJoinColumns = {@JoinColumn(name = "local_id")}
+    )
+    List<Local> locales ;
 
     @OneToMany(mappedBy = "brand")
     private List<Clothes> clothes;
@@ -35,5 +42,7 @@ public class Brand  {
         this.locales = locals;
     }
 
-
+    public String getName() {
+        return name;
+    }
 }

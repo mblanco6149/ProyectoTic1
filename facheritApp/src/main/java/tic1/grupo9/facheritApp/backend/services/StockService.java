@@ -22,4 +22,6 @@ public class StockService {
     public void save(Stock stock){
         stockRepo.save(stock);
     }
+
+
 }

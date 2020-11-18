@@ -66,24 +66,36 @@ public class StartAppiController implements Initializable {
     @FXML
     private GridPane grid;
 
+    private int pagina=0;
+    private  int cantidad_clothes ;
+    private List<Clothes> clothesToShow;
+
     
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(clothesToShow==null){
+            clothesToShow = cls.getClothesRepo().findAll();
+        }
+        cantidad_clothes = clothesToShow.size();
         agregarCLothes();
+
+
 
     }
 
     public void changeLoginButton(String user_name){
+
         ingresar_reg_button.setText("Hola " + user_name + "!");
+        ingresar_reg_button.setDisable(true);
 
     }
 
 
     public void agregarCLothes() {
-        List<Clothes> clothesToShow = cls.getClothesRepo().findAll();
-        int k = clothesToShow.size()-1;
-            for (int i = 0; i < 11; i++){
+
+        int k = clothesToShow.size()-1-15*pagina;
+            for (int i = 0; i < 5; i++){
                 for (int j = 0; j < 3; j++) {
                     if(k<0){
                         return;
@@ -223,6 +235,21 @@ public class StartAppiController implements Initializable {
             window.show();
         }
     }
+
+    public void next(javafx.event.ActionEvent actionEvent) throws IOException{
+        if(pagina*15<cantidad_clothes) {
+            pagina = pagina + 1;
+            this.agregarCLothes();
+        }
+    }
+
+    public void back(javafx.event.ActionEvent actionEvent)throws  IOException{
+        if(pagina>0){
+            pagina =pagina-1;
+            this.agregarCLothes();
+        }
+    }
+
 
 
 }

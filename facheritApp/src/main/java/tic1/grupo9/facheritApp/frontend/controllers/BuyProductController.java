@@ -66,6 +66,8 @@ public class BuyProductController implements Initializable {
 
     protected  Clothes clothes;
 
+    boolean isLoggedin;
+
 
     @FXML
     Text clothesName;
@@ -83,6 +85,9 @@ public class BuyProductController implements Initializable {
 
     @FXML
     Text message;
+
+    @FXML
+    Text priceText;
 
 
     public Clothes getClothes() {
@@ -105,6 +110,9 @@ public class BuyProductController implements Initializable {
         imageView.setImage(image);
 
         clothesName.setText(clothes.getName());
+        String price=String.valueOf(clothes.getPrice());
+        String brand = clothes.getBrand().getName();
+        priceText.setText("precio: $"+ price + "\nMarca: "+brand);
 
         List<Colour> colours = clothes.getColor();
         List<String> colourNames = new ArrayList<>();
@@ -125,25 +133,30 @@ public class BuyProductController implements Initializable {
     }
 
     @FXML
-    public  void buy(javafx.event.ActionEvent actionEvent){
+    public  void buy(javafx.event.ActionEvent actionEvent) {
         String color = chooseColour.getSelectionModel().getSelectedItem();
         String size = chooseSize.getSelectionModel().getSelectedItem();
         List<Stock> stocks = ss.getStockRepo().findByClothes(clothes);
 
-        for(int i = 0; i<stocks.size(); i++){
+        for (int i = 0; i < stocks.size(); i++) {
             Stock stock = stocks.get(i);
-            if(stock.getColor().equals(color) && stock.getSize().equals(size)){
-                if(stock.getQuantity()>0){
-                    stock.setQuantity((stock.getQuantity()-1));
+            if (stock.getColor().equals(color) && stock.getSize().equals(size) && stock.getSize().equals(size)) {
+                if (stock.getQuantity() > 0) {
+                    stock.setQuantity((stock.getQuantity() - 1));
                     buyButton.setText("thanks");
                     message.setText("Your purchase was succesful.");
-                } else{
+                    stock.setQuantity(stock.getQuantity() - 1);
+                    return;
+                } else {
                     message.setText("No stock available.");
+                    return;
                 }
-            } else{
-                message.setText("No stock found for selected size and color.");
+
             }
+
         }
+        message.setText("No stock found for selected size and color.");
+        return;
     }
 
     @FXML

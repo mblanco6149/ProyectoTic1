@@ -11,4 +11,5 @@ import java.util.List;
 public interface StockRepo extends JpaRepository<Stock,Integer> {
     public List<Stock> findByClothes(Clothes cloth);
 
+
 }
