@@ -26,4 +26,7 @@ public class ColourService {
         return cr.findByColours(colours);
     }
 
+    public ColourRepo getCr() {
+        return cr;
+    }
 }

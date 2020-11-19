@@ -70,7 +70,13 @@ public class StartAppiController implements Initializable {
     private  int cantidad_clothes ;
     private List<Clothes> clothesToShow;
 
-    
+    public List<Clothes> getClothesToShow() {
+        return clothesToShow;
+    }
+
+    public void setClothesToShow(List<Clothes> clothesToShow) {
+        this.clothesToShow = clothesToShow;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -139,25 +145,6 @@ public class StartAppiController implements Initializable {
 
 
 
-
-        /*
-        for(Clothes clothTemp: clothesToShow){
-
-            if(clothTemp==null){
-
-            }
-            VBox content = new VBox();
-            content.setAlignment(Pos.CENTER);
-            content.setPadding(new Insets(5, 0, 2, 0));
-            ImageView image1 = clothTemp.getPicture();
-
-
-            TextArea textArea = new TextArea();
-            textArea.setText(cls.getByLastId().toString());
-            content.getChildren().add(image1);
-            content.getChildren().add(textArea);
-            grid.add(content,1,1);
-         }*/
 
     }
 

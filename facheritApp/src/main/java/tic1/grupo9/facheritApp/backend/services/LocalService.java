@@ -15,7 +15,7 @@ public class LocalService  {
         localRepo.save(local);
     }
 
-
-
-
+    public LocalRepo getLocalRepo() {
+        return localRepo;
+    }
 }

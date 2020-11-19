@@ -3,13 +3,16 @@ package tic1.grupo9.facheritApp.commons.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
+
 public class Local {
 
     @Id
@@ -23,22 +26,15 @@ public class Local {
     protected String password;
 
 
-   /* @ManyToMany (cascade = CascadeType.ALL)
-            @JoinTable(
-                    name = "local_brand",
-                    joinColumns = {@JoinColumn(name = "local_id")},
-                    inverseJoinColumns = {@JoinColumn(name = "brand_id")}
-    )
-    List<Brand> brands ;*/
    @ManyToMany (mappedBy = "locales")
-   private List<Brand> brands;
+   private Set<Brand> brands;
 
     @Column
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "locals")
     List<Stock> stock;
 
 
-    public Local (String name, String password, List<Brand> brandList){
+    public Local (String name, String password, Set<Brand> brandList){
         this.name = name;this.password = password;this.brands = brandList;
     }
 
@@ -48,5 +44,13 @@ public class Local {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Set<Brand> getBrands() {
+        return brands;
+    }
+
+    public String getName() {
+        return name;
     }
 }

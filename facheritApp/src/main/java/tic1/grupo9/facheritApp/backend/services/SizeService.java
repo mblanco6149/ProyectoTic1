@@ -23,4 +23,8 @@ public class SizeService {
     public List<Size> getBySizes(String sizes){
         return sr.findBySizes(sizes);
     }
+
+    public SizeRepo getSr() {
+        return sr;
+    }
 }

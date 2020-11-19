@@ -2,12 +2,14 @@ package tic1.grupo9.facheritApp.commons.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Proxy(lazy = false)
 public class Size {
 
     @Id

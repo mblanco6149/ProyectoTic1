@@ -19,4 +19,8 @@ public class BrandService {
     public List<Brand> getByName (String name){
        return brandRepo.findByName(name);
     }
+
+    public BrandRepo getBrandRepo() {
+        return brandRepo;
+    }
 }

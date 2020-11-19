@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.io.ByteArrayInputStream;
@@ -17,6 +18,7 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "clothes")
+
 public class Clothes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -161,5 +163,21 @@ public class Clothes {
 
     public Brand getBrand() {
         return brand;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o==this){
+            return true;
+        }
+        if(!(o instanceof Clothes)){
+            return false;
+        }
+        Clothes c = (Clothes) o;
+        if(this.name.equals(c.getName()) && type.equals(c.getType()) && gender.equals(c.getGender()) ){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
