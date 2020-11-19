@@ -60,7 +60,7 @@ public class Clothes {
     protected Brand brand;
 
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "clothes")
-    protected List<Stock> stocks;
+    protected Set<Stock> stocks;
 
     public Clothes(String name, String type, double price, List<Colour> color, Set<Size> size, String gender, byte[] picture, Brand brand){
         this.name = name;

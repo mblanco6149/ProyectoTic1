@@ -182,8 +182,14 @@ public class StockController implements Initializable {
         }
         Integer quantity = spinner.getValue();
 
+
         Stock stock = new Stock(clothes,local,quantity,size,color);
-        ss.save(stock);
+        List<Stock> equalStocks = ss.getStockRepo().findByClothesAndAndColorAndAndLocalsAndAndSize(clothes,color,local,size);
+        if(equalStocks.isEmpty()) {
+            ss.save(stock);
+        }else {
+            ss.getStockRepo().updateQuantity(equalStocks.get(0).getId(),equalStocks.get(0).getQuantity() + quantity);
+        }
 
         succesText.setText("Success!");
 

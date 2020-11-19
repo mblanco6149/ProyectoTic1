@@ -21,7 +21,7 @@ public class Stock {
     @JoinColumn(name = "clothes_id")
     protected Clothes clothes;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "locals_id")
     protected Local locals;
     @Column
@@ -73,5 +73,9 @@ public class Stock {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

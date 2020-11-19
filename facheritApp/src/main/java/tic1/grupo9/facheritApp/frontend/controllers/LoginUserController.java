@@ -49,6 +49,9 @@ public class LoginUserController implements Initializable {
     @Autowired
     StartAppiController startAppiController;
 
+    @Autowired
+    BuyProductController buyProductController;
+
     @FXML
     PasswordField password_textfield;
 
@@ -62,6 +65,8 @@ public class LoginUserController implements Initializable {
 
 
 
+
+
     @FXML
     public void login(javafx.event.ActionEvent actionEvent) throws IOException, ClientNoExist, NoUserFound {
         User userTemp = new User(email_textfield.getText(),password_textfield.getText());
@@ -70,6 +75,8 @@ public class LoginUserController implements Initializable {
 
 
         if(user!=null && user.getPassword().equals(userTemp.getPassword()) ){
+
+
             FXMLLoader fxmlLoader = new FXMLLoader(StartAppiController.class.getResource("startAppi.fxml"));
             fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
             Scene tableViewScene = new Scene(fxmlLoader.load());
@@ -82,6 +89,7 @@ public class LoginUserController implements Initializable {
             // remover el boton de login/register en startAppi y poner Hola Manuel!
             Client client = cs.findByEmail(email_textfield.getText());
             startAppiController.changeLoginButton(client.getFirstName());
+            buyProductController.setLoggedIn(true);
         }
         if(email_textfield.getText().equals("admin") && password_textfield.getText().equals("facheritapp2020")) {
             FXMLLoader fxmlloader = new FXMLLoader(AdminController.class.getResource("Admin.fxml"));

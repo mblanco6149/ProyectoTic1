@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -66,7 +67,7 @@ public class BuyProductController implements Initializable {
 
     protected  Clothes clothes;
 
-    boolean isLoggedin;
+
 
 
     @FXML
@@ -89,6 +90,11 @@ public class BuyProductController implements Initializable {
     @FXML
     Text priceText;
 
+    @FXML
+    Spinner<Integer> quantitySpinner;
+
+    Boolean isLoggedIn = false;
+
 
     public Clothes getClothes() {
         return clothes;
@@ -98,6 +104,13 @@ public class BuyProductController implements Initializable {
         this.clothes = clothes;
     }
 
+    public Boolean getLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(Boolean loggedIn) {
+        isLoggedIn = loggedIn;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -134,29 +147,36 @@ public class BuyProductController implements Initializable {
 
     @FXML
     public  void buy(javafx.event.ActionEvent actionEvent) {
-        String color = chooseColour.getSelectionModel().getSelectedItem();
-        String size = chooseSize.getSelectionModel().getSelectedItem();
-        List<Stock> stocks = ss.getStockRepo().findByClothes(clothes);
 
-        for (int i = 0; i < stocks.size(); i++) {
-            Stock stock = stocks.get(i);
-            if (stock.getColor().equals(color) && stock.getSize().equals(size) && stock.getSize().equals(size)) {
-                if (stock.getQuantity() > 0) {
-                    stock.setQuantity((stock.getQuantity() - 1));
-                    buyButton.setText("thanks");
-                    message.setText("Your purchase was succesful.");
-                    stock.setQuantity(stock.getQuantity() - 1);
-                    return;
-                } else {
-                    message.setText("No stock available.");
-                    return;
+        if(isLoggedIn==false){
+            message.setText("Please, Log in first");
+        }else {
+            int quantityToBuy = quantitySpinner.getValue();
+            String color = chooseColour.getSelectionModel().getSelectedItem();
+            String size = chooseSize.getSelectionModel().getSelectedItem();
+            List<Stock> stocks = ss.getStockRepo().findByClothes(clothes);
+
+            for (int i = 0; i < stocks.size(); i++) {
+                Stock stock = stocks.get(i);
+                if (stock.getColor().equals(color) && stock.getSize().equals(size) && stock.getSize().equals(size)) {
+                    if (stock.getQuantity() >= quantityToBuy) {
+                        //stock.setQuantity((stock.getQuantity() - 1));
+                        buyButton.setText("thanks");
+                        message.setText("Your purchase was succesful.");
+
+                        ss.getStockRepo().updateQuantity(stock.getId(), stock.getQuantity() - quantityToBuy);
+                        return;
+                    } else {
+                        message.setText("No stock available.");
+                        return;
+                    }
+
                 }
 
             }
-
+            message.setText("No stock found for selected size and color.");
+            return;
         }
-        message.setText("No stock found for selected size and color.");
-        return;
     }
 
     @FXML

@@ -63,12 +63,14 @@ public class StartAppiController implements Initializable {
     private Button ingresar_reg_button;
 
 
+
     @FXML
     private GridPane grid;
 
     private int pagina=0;
     private  int cantidad_clothes ;
     private List<Clothes> clothesToShow;
+    private Boolean isLoggedIn =false;
 
     public List<Clothes> getClothesToShow() {
         return clothesToShow;
@@ -76,6 +78,14 @@ public class StartAppiController implements Initializable {
 
     public void setClothesToShow(List<Clothes> clothesToShow) {
         this.clothesToShow = clothesToShow;
+    }
+
+    public Boolean getLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(Boolean loggedIn) {
+        isLoggedIn = loggedIn;
     }
 
     @Override
