@@ -25,5 +25,6 @@
       <Button layoutX="226.0" layoutY="138.0" mnemonicParsing="false" onAction="#createLocal" prefHeight="50.0" prefWidth="148.0" text="LOCAL" />
       <Button layoutX="427.0" layoutY="138.0" mnemonicParsing="false" onAction="#createStock" prefHeight="50.0" prefWidth="148.0" text="STOCK" />
       <Text layoutX="130.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What would you like to create?" textAlignment="CENTER" wrappingWidth="339.21875" />
+      <Button layoutX="208.0" layoutY="232.0" mnemonicParsing="false" onAction="#createNewProduct" prefHeight="80.0" prefWidth="183.0" text="NEW PRODUCT" />
    </children>
 </AnchorPane>

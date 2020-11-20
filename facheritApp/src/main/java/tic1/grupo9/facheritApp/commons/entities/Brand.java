@@ -33,8 +33,8 @@ public class Brand  {
     )
    Set<Local> locales ;
 
-    @OneToMany(mappedBy = "brand")
-    private List<Clothes> clothes;
+    @OneToMany(mappedBy = "brand",cascade = CascadeType.ALL)
+    private Set<Clothes> clothes;
 
     public Brand(String name, String password){
         this.name=name;
@@ -63,5 +63,9 @@ public class Brand  {
 
     public Set<Local> getLocales() {
         return locales;
+    }
+
+    public  void addClothes(Clothes c){
+        this.clothes.add(c);
     }
 }

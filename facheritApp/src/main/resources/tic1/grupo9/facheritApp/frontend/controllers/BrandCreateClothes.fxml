@@ -1,56 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.RegisterClientController">
+<AnchorPane prefHeight="542.0" prefWidth="734.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.CreateClothesController">
    <children>
-      <Button layoutX="235.0" layoutY="358.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="80.0" text="Register" />
-      <Text layoutX="135.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sizes:">
+      <Button layoutX="331.0" layoutY="476.0" mnemonicParsing="false" onAction="#addClothes" prefHeight="26.0" prefWidth="101.0" text="Add Product" />
+      <Text layoutX="61.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sizes:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <Text layoutX="135.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colors:" wrappingWidth="139.7366943359375">
+      <Text layoutX="61.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colors:" wrappingWidth="139.7366943359375">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <AnchorPane prefHeight="38.0" prefWidth="600.0" style="-fx-background-color: bfb3b2;">
+      <AnchorPane prefHeight="38.0" prefWidth="734.0" style="-fx-background-color: bfb3b2;">
          <children>
-            <Text layoutX="23.0" layoutY="24.0" onMouseClicked="#home" strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp - Create Clothes" wrappingWidth="221.0">
+            <Text layoutX="23.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp - Create Clothes" wrappingWidth="221.0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
             </Text>
+            <Button layoutX="633.0" layoutY="6.0" mnemonicParsing="false" onAction="#home" text="Home" />
          </children>
       </AnchorPane>
-      <TextField fx:id="clName" layoutX="211.0" layoutY="55.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter name..">
+      <TextField fx:id="nameTxt" layoutX="137.0" layoutY="50.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter name..">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <Text layoutX="135.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="139.7366943359375">
+      <Text layoutX="61.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="139.7366943359375">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <TextField fx:id="clType" layoutX="211.0" layoutY="99.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter type..">
+      <TextField fx:id="typeTxt" layoutX="137.0" layoutY="94.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter type..">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <Text layoutX="135.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" wrappingWidth="139.7366943359375">
+      <Text layoutX="61.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" wrappingWidth="139.7366943359375">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
       <Text fx:id="passwordtxt" fill="#ff000000" layoutX="371.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="221.0" />
-      <ComboBox layoutX="211.0" layoutY="137.0" prefWidth="150.0" promptText="Pick colors" />
-      <ComboBox layoutX="211.0" layoutY="179.0" prefWidth="150.0" promptText="Pick sizes" />
+      <Text layoutX="61.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand:" wrappingWidth="139.7366943359375">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="brandChoiceBox" layoutX="137.0" layoutY="152.0" prefWidth="150.0" />
+      <Text layoutX="61.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="139.7366943359375">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="genderChoiceBox" layoutX="137.0" layoutY="212.0" prefWidth="150.0" />
+      <TextField fx:id="priceTxt" layoutX="139.0" layoutY="271.0" />
+      <Text layoutX="61.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" wrappingWidth="139.7366943359375">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="colorTxt" layoutX="137.0" layoutY="333.0" prefHeight="56.0" prefWidth="175.0" text="Enter colors as:&#10;color1,color2,..." />
+      <TextArea fx:id="sizeTxt" layoutX="137.0" layoutY="398.0" prefHeight="56.0" prefWidth="175.0" text="Enter sizes as:&#10;size1,size2,..." />
+      <Button layoutX="519.0" layoutY="358.0" mnemonicParsing="false" onAction="#selectImage" prefHeight="26.0" prefWidth="140.0" text="select an image" />
+      <VBox layoutX="421.0" layoutY="111.0" prefHeight="200.0" prefWidth="258.0">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="202.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </VBox>
+      <Text fx:id="imagetext" layoutX="549.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.0" />
+      <Text fx:id="errorText" layoutX="285.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="271.20003967285163" />
    </children>
 </AnchorPane>

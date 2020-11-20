@@ -26,8 +26,7 @@ import java.util.ResourceBundle;
 @Controller
 public class AdminController implements Initializable {
 
-    @Autowired
-    EntityManagerFactory emf;
+
 
     @Autowired
     BrandService bs;
@@ -43,25 +42,14 @@ public class AdminController implements Initializable {
 
     private List<Brand> brandList;
     private List<Colour> colourList;
-    private List<Size> sizeList;
-    private List<Stock> stockList;
     private List<Local> localList;
 
     public List<Brand> getBrandList() {
         return brandList;
     }
 
-    public List<Colour> getColourList() {
-        return colourList;
-    }
 
-    public List<Size> getSizeList() {
-        return sizeList;
-    }
 
-    public List<Stock> getStockList() {
-        return stockList;
-    }
 
     public List<Local> getLocalList() {
         return localList;
@@ -75,15 +63,7 @@ public class AdminController implements Initializable {
 
             brandList = bs.getBrandRepo().findAll();
         }
-        if(colourList==null){
-            colourList = cols.getColourRepo().findAll();
-        }
-        if(sizeList==null){
-            sizeList = szs.getSizeRepo().findAll();
-        }
-        if(stockList==null){
-            stockList = ss.getStockRepo().findAll();
-        }
+
         if(localList==null){
             localList = ls.getLocalRepo().findAll();
         }
@@ -121,15 +101,19 @@ public class AdminController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
 
-    /*    FXMLLoader fxmlLoader = new FXMLLoader(BuyProductController.class.getResource("BuyProduct.fxml"));
+
+        window.show();
+    }
+
+    @FXML
+    public void createNewProduct(javafx.event.ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(CreateClothesController.class.getResource("BrandCreateClothes.fxml"));
         fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
-
-
         Scene tableViewScene = new Scene(fxmlLoader.load());
 
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(tableViewScene);*/
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
         window.show();
     }
 }
