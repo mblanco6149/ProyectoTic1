@@ -45,6 +45,10 @@ import java.util.List;
 @Controller
 public class CreateClothesController implements Initializable {
 
+    @Autowired
+    AdminController adminController;
+    @Autowired
+    StartAppiController startAppiController;
 
     @Autowired
     BrandService bs;
@@ -91,7 +95,7 @@ public class CreateClothesController implements Initializable {
     List<Brand> brands;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        brands = bs.getBrandRepo().findAll();
+        brands = adminController.getBrandList();
 
         fileChooser.setInitialDirectory(new File("C:\\temp"));
         showFields();
@@ -182,6 +186,7 @@ public class CreateClothesController implements Initializable {
 
         }
 
+        startAppiController.getClothesToShow().add(clothes);
         cs.save(clothes);
 
     }

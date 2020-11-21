@@ -68,4 +68,8 @@ public class Brand  {
     public  void addClothes(Clothes c){
         this.clothes.add(c);
     }
+
+    public  void addLocal(Local l){
+        this.locales.add(l);
+    }
 }

@@ -1,44 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.LoginUsuer">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.LocalController">
    <children>
-      <Button layoutX="235.0" layoutY="358.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Register" />
-      <Text layoutX="110.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Text>
-      <Text layoutX="110.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email:" wrappingWidth="139.7366943359375">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Text>
+      <Button layoutX="235.0" layoutY="358.0" mnemonicParsing="false" onAction="#create" prefHeight="26.0" prefWidth="80.0" text="Create" />
       <AnchorPane prefHeight="38.0" prefWidth="600.0" style="-fx-background-color: bfb3b2;">
          <children>
-            <Text layoutX="26.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp-Register" wrappingWidth="242.39996337890625">
+            <Text layoutX="26.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp-Create Local" wrappingWidth="242.39996337890625">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
             </Text>
+            <Button layoutX="525.0" layoutY="6.0" mnemonicParsing="false" onAction="#home" text="Home" />
          </children>
       </AnchorPane>
-      <TextField layoutX="211.0" layoutY="138.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" text="Enter email...">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="212.0" layoutY="180.0" opacity="0.55" text="Enter password...">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="211.0" layoutY="55.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" text="Enter name...">
+      <TextField fx:id="nameTxt" layoutX="211.0" layoutY="55.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter name">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
@@ -48,35 +30,22 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <TextField layoutX="211.0" layoutY="99.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" text="Enter surname...">
+      <TextField fx:id="passwordTxt" layoutX="211.0" layoutY="99.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" promptText="Enter surname...">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <Text layoutX="110.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="surname:" wrappingWidth="139.7366943359375">
+      <Text layoutX="110.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password:" wrappingWidth="139.7366943359375">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <TextField layoutX="210.0" layoutY="222.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" text="Enter address...">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-      </TextField>
-      <Text layoutX="109.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="address:" wrappingWidth="139.7366943359375">
+      <Text layoutX="110.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which brands will you sell?" wrappingWidth="139.7366943359375">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <TextField layoutX="210.0" layoutY="266.0" opacity="0.55" prefHeight="26.0" prefWidth="149.0" text="Enter phone...">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-      </TextField>
-      <Text layoutX="109.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="phone number:" wrappingWidth="139.7366943359375">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Text>
+      <ListView fx:id="brandListView" layoutX="157.0" layoutY="202.0" prefHeight="142.0" prefWidth="130.0" />
+      <ListView fx:id="brandListViewToSave" layoutX="315.0" layoutY="202.0" prefHeight="142.0" prefWidth="130.0" />
    </children>
 </AnchorPane>

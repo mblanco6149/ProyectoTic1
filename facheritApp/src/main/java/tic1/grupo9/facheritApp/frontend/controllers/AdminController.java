@@ -26,7 +26,8 @@ import java.util.ResourceBundle;
 @Controller
 public class AdminController implements Initializable {
 
-
+    @Autowired
+    StartAppiController startAppiController;
 
     @Autowired
     BrandService bs;
@@ -41,7 +42,6 @@ public class AdminController implements Initializable {
 
 
     private List<Brand> brandList;
-    private List<Colour> colourList;
     private List<Local> localList;
 
     public List<Brand> getBrandList() {
@@ -69,9 +69,11 @@ public class AdminController implements Initializable {
         }
     }
 
+
+
     @FXML
     public void createLocal(javafx.event.ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(AdminController.class.getResource("Admin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LocalController.class.getResource("Local.fxml"));
         fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
         Scene tableViewScene = new Scene(fxmlLoader.load());
 
@@ -115,5 +117,26 @@ public class AdminController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
         window.show();
+    }
+
+    @FXML
+    public void returnToStart(javafx.event.ActionEvent actionEvent)throws  IOException{
+        startAppiController.updateClothesFromAdmin();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(StartAppiController.class.getResource("startAppi.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    public void updateBrands (){
+        this.brandList=bs.getBrandRepo().findAll();
+    }
+
+    public  void  updateLocals(){
+        this.localList=ls.getLocalRepo().findAll();
     }
 }

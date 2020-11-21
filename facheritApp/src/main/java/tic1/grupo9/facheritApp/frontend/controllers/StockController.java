@@ -69,20 +69,22 @@ public class StockController implements Initializable {
     private List<Brand> brandList;
     private List<Local> localList;
 
+
     private Brand brand;
     private Clothes cloth;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(clothesList==null){
             clothesList =startAppiController.getClothesToShow();
         }
 
-        if(brandList==null){
-            brandList = adminController.getBrandList();
-        }
-        if(localList==null){
-            localList = adminController.getLocalList();
-        }
+
+        brandList = adminController.getBrandList();
+
+
+        localList = adminController.getLocalList();
+
 
         showSelection();
     }

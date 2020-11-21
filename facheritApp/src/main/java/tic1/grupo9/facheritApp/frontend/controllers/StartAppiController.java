@@ -247,6 +247,10 @@ public class StartAppiController implements Initializable {
         }
     }
 
+    public void updateClothesFromAdmin(){
+        this.clothesToShow=cls.getClothesRepo().findAll();;
+    }
+
 
 
 }
