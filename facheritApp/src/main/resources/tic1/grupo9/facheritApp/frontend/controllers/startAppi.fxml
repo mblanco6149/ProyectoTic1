@@ -8,6 +8,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -44,10 +46,17 @@
                   <Font name="Arial" size="13.0" />
                </font>
             </Button>
-          <Button fx:id="carrito_button" alignment="TOP_RIGHT" contentDisplay="TOP" mnemonicParsing="false" onAction="#carrito" prefHeight="26.0" prefWidth="58.0" text="Carrito" textAlignment="CENTER" wrapText="true">
+          <Button fx:id="carrito_button" alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#carrito" prefHeight="26.0" prefWidth="58.0" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="33.0">
+                     <image>
+                        <Image url="@../../../../../../../../../../../AppData/Local/Temp/icons8_shopping_cart_64px_5.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="12.0" smooth="false" stroke="#00000001" strokeType="INSIDE" width="562.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp-Home" wrappingWidth="133.97216796875" />

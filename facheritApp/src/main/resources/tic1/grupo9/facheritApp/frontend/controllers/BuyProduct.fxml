@@ -19,11 +19,11 @@
       <ChoiceBox fx:id="chooseSize" layoutX="392.0" layoutY="212.0" prefWidth="150.0" />
       <Text layoutX="392.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select colour" wrappingWidth="121.8031005859375" />
       <Text layoutX="392.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select size" wrappingWidth="121.8031005859375" />
-      <Button fx:id="buyButton" layoutX="447.0" layoutY="317.0" mnemonicParsing="false" onAction="#buy" text="Buy" />
+      <Button fx:id="buyButton" layoutX="447.0" layoutY="317.0" mnemonicParsing="false" onAction="#buy" text="Add to Cart" />
       <Text fx:id="priceText" layoutX="382.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.93670654296875" />
       <Text fx:id="message" fill="RED" layoutX="350.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="235.8031005859375" />
       <Button layoutX="527.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome" text="Home" />
-      <Spinner fx:id="quantitySpinner"  initialValue="1" layoutX="394.0" layoutY="273.0" max="100" min="0"/>
+      <Spinner fx:id="quantitySpinner" initialValue="1" layoutX="394.0" layoutY="273.0" max="100" min="0" />
       <Text layoutX="394.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" />
    </children>
 </AnchorPane>

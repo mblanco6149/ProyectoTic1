@@ -220,22 +220,21 @@ public class StartAppiController implements Initializable {
     }
 
     public void carrito(javafx.event.ActionEvent actionEvent) throws IOException{
-        if(bsi.carritoIsEmpty()){
 
-        }else{
-            FXMLLoader fxmlLoader = new FXMLLoader(FacheritAppApplication.class.getResource("Carrito.fxml"));
-            fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
-            Scene tableViewScene = new Scene(fxmlLoader.load());
+        FXMLLoader fxmlLoader = new FXMLLoader(CarritoControler.class.getResource("Carrito.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
 
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(tableViewScene);
-            window.show();
-        }
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+
     }
 
     public void next(javafx.event.ActionEvent actionEvent) throws IOException{
-        if(pagina*15<cantidad_clothes) {
+        if((pagina+1)*15<cantidad_clothes) {
             pagina = pagina + 1;
+            grid.getChildren().clear();
             this.agregarCLothes();
         }
     }
@@ -243,6 +242,7 @@ public class StartAppiController implements Initializable {
     public void back(javafx.event.ActionEvent actionEvent)throws  IOException{
         if(pagina>0){
             pagina =pagina-1;
+            grid.getChildren().clear();
             this.agregarCLothes();
         }
     }

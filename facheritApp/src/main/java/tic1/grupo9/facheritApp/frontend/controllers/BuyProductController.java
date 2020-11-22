@@ -65,6 +65,9 @@ public class BuyProductController implements Initializable {
     @Autowired
     BackendServiceImp bsi;
 
+    @Autowired
+    CarritoControler carritoControler;
+
     protected  Clothes clothes;
 
 
@@ -160,14 +163,20 @@ public class BuyProductController implements Initializable {
                 Stock stock = stocks.get(i);
                 if (stock.getColor().equals(color) && stock.getSize().equals(size) && stock.getSize().equals(size)) {
                     if (stock.getQuantity() >= quantityToBuy) {
-                        //stock.setQuantity((stock.getQuantity() - 1));
-                        buyButton.setText("thanks");
-                        message.setText("Your purchase was succesful.");
 
-                        ss.getStockRepo().updateQuantity(stock.getId(), stock.getQuantity() - quantityToBuy);
-                        return;
+                        if(!carritoControler.getStocksToBuy().contains(stock)) {
+                            carritoControler.getStocksToBuy().add(stock);
+                            carritoControler.getQuantityToSubstract().add(quantityToBuy);
+                            message.setText("Added to cart");
+                            message.setStyle("-fx-text-fill: green; ");
+                            return;
+                        }else{
+                            message.setText("Item already on cart");
+                            message.setStyle("-fx-text-fill: red; ");
+                        }
                     } else {
                         message.setText("No stock available.");
+                        message.setStyle("-fx-text-fill: red; ");
                         return;
                     }
 
@@ -175,6 +184,7 @@ public class BuyProductController implements Initializable {
 
             }
             message.setText("No stock found for selected size and color.");
+            message.setStyle("-fx-text-fill: red; ");
             return;
         }
     }
