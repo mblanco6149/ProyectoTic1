@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,13 +60,17 @@ public class StartAppiController implements Initializable {
     @Autowired
     BuyProductController bpc;
 
+    @Autowired
+    CarritoControler carrito;
+
     @FXML
     private Button ingresar_reg_button;
 
-
-
     @FXML
     private GridPane grid;
+
+    @FXML
+    private Text cartCount;
 
     private int pagina=0;
     private  int cantidad_clothes ;
@@ -90,11 +95,13 @@ public class StartAppiController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        cartCount.setText(String.valueOf(carrito.getQuantityToSubstract().size()) );
         if(clothesToShow==null){
             clothesToShow = cls.getClothesRepo().findAll();
         }
         cantidad_clothes = clothesToShow.size();
         agregarCLothes();
+
 
 
 

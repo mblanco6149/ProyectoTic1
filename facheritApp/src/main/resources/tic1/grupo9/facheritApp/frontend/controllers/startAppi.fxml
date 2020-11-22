@@ -58,6 +58,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Text fx:id="cartCount" fill="#272dd7" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="76.79999542236328" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="12.0" smooth="false" stroke="#00000001" strokeType="INSIDE" width="562.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp-Home" wrappingWidth="133.97216796875" />
         </items>
