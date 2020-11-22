@@ -110,9 +110,12 @@ public class CarritoControler implements Initializable {
                 Stock s= stocksToBuy.get(i);
                 Integer quantity = quantityToSubstract.get(i);
                 ss.getStockRepo().updateQuantity(s.getId(), s.getQuantity() - quantity);
-
-
             }
+
+            stocksToBuy.clear();
+            quantityToSubstract.clear();
+            grid.getChildren().clear();
+            showItems();
         }
     }
 
