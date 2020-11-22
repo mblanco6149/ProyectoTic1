@@ -55,10 +55,8 @@ public class FilingDatabaseTest {
 
         Brand adidas = new Brand("Adidas", "adidas123");
         Brand nike = new Brand("Adidas", "adidas123");
-        List<Brand> brandList1 = new ArrayList<>();
-        brandList1.add(adidas);
-        List<Brand> brandList2 = new ArrayList<>();
-        brandList2.add(nike);
+        Set<Brand> brandList1 = new HashSet<>();brandList1.add(adidas);
+        Set<Brand> brandList2 = new HashSet<>();brandList2.add(nike);
 
         Local localAdidas = new Local("Adidas", "adidas567", brandList1);
         Local localNike = new Local("Nike", "Nike1234", brandList2);

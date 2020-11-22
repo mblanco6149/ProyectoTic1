@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-
 <AnchorPane prefHeight="665.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.HombreController">
    <children>
       <ToolBar layoutX="2.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="942.0">
@@ -23,12 +22,12 @@
                   <Insets top="6.0" />
                </HBox.margin>
             </Hyperlink>
-            <Hyperlink text="Mujer" textFill="#292626">
+            <Hyperlink onAction="#mujer" text="Mujer" textFill="#292626">
                <HBox.margin>
                   <Insets left="2.0" right="2.0" top="6.0" />
                </HBox.margin>
             </Hyperlink>
-            <Hyperlink text="Niños" textFill="#262323">
+            <Hyperlink onAction="#niños" text="Niños" textFill="#262323">
                <HBox.margin>
                   <Insets left="2.0" right="2.0" top="6.0" />
                </HBox.margin>
