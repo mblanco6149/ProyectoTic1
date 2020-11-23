@@ -47,6 +47,9 @@ public class RegisterClientController implements Initializable {
     BackendServiceImp bsi;
 
     @Autowired
+    BuyProductController buyProductController;
+
+    @Autowired
     StartAppiController startAppiController;
 
     @FXML
@@ -89,6 +92,9 @@ public class RegisterClientController implements Initializable {
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
             window.show();
+            System.out.println(cliente);
+            startAppiController.changeLoginButton(txtName.getText());
+            buyProductController.setLoggedIn(true);
         }
 
 
