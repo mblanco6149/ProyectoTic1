@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Repository
@@ -28,6 +29,10 @@ public interface ClothesRepo extends JpaRepository<Clothes,Integer> {
     public List<Clothes> findByPriceBetween(double price1, double price2);
 
     public List<Clothes> findByGender(String gender);
+
+
+    public List<Clothes> findByGenderAndType(String gender, String type);
+
 
     public Clothes findTopByOrderByIdDesc();
 

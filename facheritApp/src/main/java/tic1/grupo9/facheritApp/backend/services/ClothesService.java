@@ -49,6 +49,10 @@ public class ClothesService {
         return clothesRepo.findByGender(gender);
     }
 
+    public List<Clothes> getByGenderAndType(String gender, String type){
+        return clothesRepo.findByGenderAndType(gender, type);
+    }
+
     public Clothes getByLastId(){
         return clothesRepo.findTopByOrderByIdDesc();
     }
