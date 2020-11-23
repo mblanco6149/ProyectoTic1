@@ -56,8 +56,6 @@ public class HombreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //GridPane gridPane = new GridPane();
-        //gridPane.setPrefWidth(657);
         masculineClothes = cls.getByGender("Masculino");
         int temp = masculineClothes.size()-1;
         //scrollPane.setContent(gridPane);
@@ -131,14 +129,23 @@ public class HombreController implements Initializable {
 
     public void pantalon(javafx.event.ActionEvent actionEvent) throws IOException{
         gridPane.getChildren().clear();
-        List<Clothes> pantalones = cls.getByGenderAndType("Masculino", "pantalon");
+        agregar(cls.getByGenderAndType("Masculino", "pantalon"));
        // List<Clothes> pantalones2 = cls.getClothesRepo().findAll(ClotheSpecification.builder().gender("Masculino").type("pantalon").build());
+
+    }
+
+    public void camisa(javafx.event.ActionEvent actionEvent) throws IOException{
+        gridPane.getChildren().clear();
+        agregar(cls.getByGenderAndType("Masculino", "camisa"));
+
+    }
+
+    private void agregar(List<Clothes> pantalones){
         int count = 0;
         int temp = pantalones.size()-1;
-
         for(int i =0; i<(pantalones.size()/2); i++) {
             count++;
-            if(count>gridPane.getRowCount()){
+            if (count > gridPane.getRowCount()) {
                 RowConstraints con = new RowConstraints();
                 con.setPrefHeight(190);
                 gridPane.getRowConstraints().add(con);
@@ -160,9 +167,8 @@ public class HombreController implements Initializable {
                 temp--;
             }
         }
+
     }
-
-
 
 
 }
