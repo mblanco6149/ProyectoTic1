@@ -2,7 +2,9 @@ package tic1.grupo9.facheritApp.backend.repository;
 
 import lombok.Data;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
 
@@ -11,7 +13,7 @@ import java.util.Set;
 
 
 @Repository
-public interface ClothesRepo extends JpaRepository<Clothes,Integer> {
+public interface ClothesRepo extends JpaRepository<Clothes,Integer>, JpaSpecificationExecutor {
 
     public List<Clothes> findByName(String name);
 
@@ -30,8 +32,9 @@ public interface ClothesRepo extends JpaRepository<Clothes,Integer> {
 
     public List<Clothes> findByGender(String gender);
 
+    @Query("SELECT c FROM Clothes c WHERE c.gender = ?1 and c.type = ?2")
+    public List<Clothes> findAllByGenderAndType(String gender, String type);
 
-    public List<Clothes> findByGenderAndType(String gender, String type);
 
 
     public Clothes findTopByOrderByIdDesc();

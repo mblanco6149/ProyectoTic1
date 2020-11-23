@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import tic1.grupo9.facheritApp.FacheritAppApplication;
+import tic1.grupo9.facheritApp.backend.services.ClotheSpecification;
 import tic1.grupo9.facheritApp.backend.services.ClothesService;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
 
@@ -129,8 +130,9 @@ public class HombreController implements Initializable {
 
     public void pantalon(javafx.event.ActionEvent actionEvent) throws IOException{
         gridPane.getChildren().clear();
-        List<Clothes> pantalones = cls.getByGenderAndType("Masculino", "calzado");
-
+        List<Clothes> pantalones = cls.getByGenderAndType("Masculino", "pantalon");
+       // List<Clothes> pantalones2 = cls.getClothesRepo().findAll(ClotheSpecification.builder().gender("Masculino").type("pantalon").build());
+        int count = gridPane.getRowCount();
         int temp = pantalones.size()-1;
 
         for(int i =0; i<(pantalones.size()/2); i++) {
@@ -139,7 +141,7 @@ public class HombreController implements Initializable {
                 gridPane.add(content, j, i);
                 content.setAlignment(Pos.CENTER);
                 content.setPadding(new Insets(5, 5, 5, 5));
-                Clothes clothTemp = masculineClothes.get(temp);
+                Clothes clothTemp = pantalones.get(temp);
                 ImageView image = clothTemp.getPicture();
                 Button buyButton = new Button("Buy");
                 Label textArea = new Label();

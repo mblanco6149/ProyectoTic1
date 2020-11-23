@@ -50,7 +50,7 @@ public class ClothesService {
     }
 
     public List<Clothes> getByGenderAndType(String gender, String type){
-        return clothesRepo.findByGenderAndType(gender, type);
+        return clothesRepo.findAllByGenderAndType(gender, type);
     }
 
     public Clothes getByLastId(){
