@@ -116,7 +116,7 @@
                <children>
                   <ScrollPane fx:id="scrollPane" prefHeight="556.0" prefWidth="658.0">
                      <content>
-                        <GridPane fx:id="gridPane" prefHeight="557.0" prefWidth="656.0">
+                        <GridPane fx:id="gridPane" prefHeight="559.0" prefWidth="662.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

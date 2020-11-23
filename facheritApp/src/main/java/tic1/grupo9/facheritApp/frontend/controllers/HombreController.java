@@ -16,6 +16,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -132,10 +133,16 @@ public class HombreController implements Initializable {
         gridPane.getChildren().clear();
         List<Clothes> pantalones = cls.getByGenderAndType("Masculino", "pantalon");
        // List<Clothes> pantalones2 = cls.getClothesRepo().findAll(ClotheSpecification.builder().gender("Masculino").type("pantalon").build());
-        int count = gridPane.getRowCount();
+        int count = 0;
         int temp = pantalones.size()-1;
 
         for(int i =0; i<(pantalones.size()/2); i++) {
+            count++;
+            if(count>gridPane.getRowCount()){
+                RowConstraints con = new RowConstraints();
+                con.setPrefHeight(190);
+                gridPane.getRowConstraints().add(con);
+            }
             for (int j = 0; j < 2; j++) {
                 VBox content = new VBox();
                 gridPane.add(content, j, i);
@@ -154,4 +161,8 @@ public class HombreController implements Initializable {
             }
         }
     }
+
+
+
+
 }
