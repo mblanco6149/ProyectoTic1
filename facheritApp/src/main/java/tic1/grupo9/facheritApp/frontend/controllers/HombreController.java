@@ -162,8 +162,29 @@ public class HombreController implements Initializable {
         agregar(cls.getByGenderAndType("Masculino", "camisa"));
 
     }
+    public void abrigos(javafx.event.ActionEvent actionEvent) throws IOException{
+        gridPane.getChildren().clear();
+        agregar(cls.getByGenderAndType("Masculino", "abrigo"));
+
+    }
+    public void calzado(javafx.event.ActionEvent actionEvent) throws IOException{
+        gridPane.getChildren().clear();
+        agregar(cls.getByGenderAndType("Masculino", "calzado"));
+
+    }
+    public void remera(javafx.event.ActionEvent actionEvent) throws IOException{
+        gridPane.getChildren().clear();
+        agregar(cls.getByGenderAndType("Masculino", "remera"));
+
+    }
+    public void bermuda(javafx.event.ActionEvent actionEvent) throws IOException{
+        gridPane.getChildren().clear();
+        agregar(cls.getByGenderAndType("Masculino", "bermuda"));
+
+    }
 
     private void agregar(List<Clothes> pantalones){
+        System.out.println(pantalones.size());
         int count = 0;
         int temp = pantalones.size()-1;
         for(int i =0; i<(pantalones.size()/2); i++) {
@@ -174,6 +195,7 @@ public class HombreController implements Initializable {
                 gridPane.getRowConstraints().add(con);
             }
             for (int j = 0; j < 2; j++) {
+                if(temp<0)return;
                 VBox content = new VBox();
                 gridPane.add(content, j, i);
                 content.setAlignment(Pos.CENTER);
