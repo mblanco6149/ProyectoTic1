@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -30,9 +31,10 @@ public class BrandController implements Initializable {
     @FXML
     TextField nameTxt;
     @FXML
-    TextField passwordTxt;
+    PasswordField passwordTxt;
     @FXML
     Text errorText;
+
 
 
     @Override

@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tic1.grupo9.facheritApp.frontend.controllers.CarritoControler">
    <children>
-      <AnchorPane prefHeight="54.0" prefWidth="600.0" style="-fx-background-color: bfb3b2;">
+      <AnchorPane prefHeight="15.0" prefWidth="600.0" style="-fx-background-color: bfb3b2;">
          <children>
             <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="facheritApp" wrappingWidth="200.79991149902344">
                <font>
@@ -25,9 +25,9 @@
                   <Font name="Verdana" size="14.0" />
                </font>
             </Text>
-            <Button layoutX="527.0" layoutY="7.0" mnemonicParsing="false" onAction="#home" prefHeight="40.0" prefWidth="50.0">
+            <Button layoutX="545.0" layoutY="4.0" mnemonicParsing="false" onAction="#home" prefHeight="35.0" prefWidth="41.0">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="29.0">
+                  <ImageView fitHeight="18.0" fitWidth="19.0">
                      <image>
                         <Image url="@../../../../../../../../FillingDatabaseImages/icons8_home_16px.png" />
                      </image>

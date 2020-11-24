@@ -45,7 +45,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="pickBrand" layoutX="211.0" layoutY="50.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="pickBrand" accessibleHelp="Select brand.." layoutX="211.0" layoutY="50.0" prefWidth="150.0" />
       <ChoiceBox fx:id="pickName" layoutX="212.0" layoutY="139.0" prefWidth="150.0" />
       <ChoiceBox fx:id="pickColor" layoutX="212.0" layoutY="183.0" prefWidth="150.0" />
       <ChoiceBox fx:id="pickSize" layoutX="212.0" layoutY="232.0" prefWidth="150.0" />
