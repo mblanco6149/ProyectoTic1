@@ -164,7 +164,7 @@ public class MujerController implements Initializable {
 
     @FXML
     public void niños(javafx.event.ActionEvent actionEvent) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(NiñosController.class.getResource("niños.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(NiñosController.class.getResource("infante.fxml"));
         fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
         Scene tableViewScene = new Scene(fxmlLoader.load());
 
