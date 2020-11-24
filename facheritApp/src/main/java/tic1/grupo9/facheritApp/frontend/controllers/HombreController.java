@@ -113,7 +113,7 @@ public class HombreController implements Initializable {
 
 
     private void agregar(List<Clothes> prenda){
-        System.out.println(prenda.size());
+        //System.out.println(prenda.size());
         int count = 0;
         int temp = prenda.size()-1;
         for(int i =0; i<(prenda.size()/2); i++) {
@@ -137,7 +137,7 @@ public class HombreController implements Initializable {
                 content.getChildren().add(image);
                 content.getChildren().add(textArea);
                 content.getChildren().add(buyButton);
-                System.out.println(clothTemp.getType());
+                //System.out.println(clothTemp.getType());
                 temp--;
             }
         }
@@ -145,40 +145,47 @@ public class HombreController implements Initializable {
     }
 
     public void filter(javafx.event.ActionEvent actionEvent) throws IOException{
-        String tipoSeleccionado = typeBox.getSelectionModel().getSelectedItem();
-        String talleSeleccionado = sizeBox.getSelectionModel().getSelectedItem();
-        String colorSeleccionado = colorBox.getSelectionModel().getSelectedItem();
+        String tipoSeleccionado = typeBox.getValue();
+        String talleSeleccionado = sizeBox.getValue();
+        String colorSeleccionado = colorBox.getValue();
         double precio1 = price1.getValue();
         double precio2 = price2.getValue();
 
-        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && price1==null && price2==null){
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && precio1==0.0 && precio2==0.0){
             gridPane.getChildren().clear();
+            System.out.println("hola");
             agregar(cls.getByGenderAndType("Masculino", tipoSeleccionado));
+            return;
         }
 
-        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && price1==null && price2==null){
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && precio1==0.0 && precio2==0.0){
             gridPane.getChildren().clear();
             agregar(cls.getByGenderAndTypeAndSize("Masculino", tipoSeleccionado, talleSeleccionado));
+            return;
         }
 
-        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && price1==null && price2==null){
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && precio1==0.0 && precio2==0.0){
             gridPane.getChildren().clear();
             agregar(cls.getByGenderAndTypeAndSizeAndColor("Masculino", tipoSeleccionado, talleSeleccionado, colorSeleccionado));
+            return;
         }
 
         if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && price1!=null && price2!=null){
             gridPane.getChildren().clear();
             agregar(cls.getByGenderAndTypeAndSizeAndColorAndPriceBetween("Masculino", tipoSeleccionado, talleSeleccionado, colorSeleccionado, precio1, precio2));
+            return;
         }
 
         if(tipoSeleccionado==null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null){
             gridPane.getChildren().clear();
             agregar(cls.getByGenderAndPriceBetween("Masculino", precio1, precio2));
+            return;
         }
 
         if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null){
             gridPane.getChildren().clear();
             agregar(cls.getByGenderAndTypeAndPriceBetween("Masculino", tipoSeleccionado, precio1, precio2));
+            return;
         }
 
 
