@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import tic1.grupo9.facheritApp.commons.entities.Brand;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
 
 import java.util.List;
@@ -19,8 +20,13 @@ public interface ClothesRepo extends JpaRepository<Clothes,Integer>, JpaSpecific
 
     public List<Clothes> findByType(String type);
 
+    public List<Clothes> findByGenderAndBrand(String genero, Brand brandName);
 
     public List<Clothes> findByColor(String color);
+
+    public List<Clothes> findByGenderAndTypeAndBrand(String geenro, String type, Brand brandName);
+
+    public List<Clothes> findByGenderAndTypeAndBrandAndPriceBetween(String genero, String type, Brand brandName, double price1, double price2);
 
 
     public List<Clothes> findByPrice(double price);
@@ -40,6 +46,8 @@ public interface ClothesRepo extends JpaRepository<Clothes,Integer>, JpaSpecific
     public List<Clothes> findAllByGenderAndTypeAndSizeAndColor(String gender, String type, String size, String color);
 
     public List<Clothes> findAllByGenderAndTypeAndSizeAndColorAndPriceBetween(String gender, String type, String size, String color, double price1, double price2);
+
+    public List<Clothes> findAllByGenderAndBrandAndPriceBetween(String gender, Brand brandName, double price1, double price2);
 
     public List<Clothes> findAllByGenderAndSize(String gender, String size);
 

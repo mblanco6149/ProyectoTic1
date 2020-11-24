@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import tic1.grupo9.facheritApp.backend.repository.ClothesRepo;
+import tic1.grupo9.facheritApp.commons.entities.Brand;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
 
 import java.util.List;
@@ -72,6 +73,17 @@ public class ClothesService {
     public List<Clothes> getByGenderAndTypeAndPriceBetween(String gender, String type, double price1, double price2){
         return clothesRepo.findAllByGenderAndTypeAndPriceBetween(gender, type, price1, price2);
     }
+
+    public List<Clothes> getByBrand(String genero, Brand brandName){
+        return clothesRepo.findByGenderAndBrand(genero, brandName);
+    }
+
+    public List<Clothes> getByTypeAndBrand(String genero, String type, Brand brandName){return clothesRepo.findByGenderAndTypeAndBrand(genero,type,brandName);}
+
+    public List<Clothes> getByTypeAndBrandAndPrice(String genero, String type, Brand brandName, double price1, double price2){return clothesRepo.findByGenderAndTypeAndBrandAndPriceBetween(genero,type,brandName,price1,price2);}
+
+    public List<Clothes> getByGenderAndBrandAndPrice(String genero, Brand brandName, double price1, double price2){return clothesRepo.findAllByGenderAndBrandAndPriceBetween(genero, brandName, price1, price2);}
+
     public Clothes getByLastId(){
         return clothesRepo.findTopByOrderByIdDesc();
     }

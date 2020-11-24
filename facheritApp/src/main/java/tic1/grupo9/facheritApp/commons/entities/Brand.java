@@ -23,8 +23,7 @@ public class Brand  {
     @Column
     protected String password;
 
-   /* @ManyToMany (mappedBy = "brands")
-    private List<Local> locals;*/
+
     @ManyToMany (cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     @JoinTable(
             name = "local_brand",
