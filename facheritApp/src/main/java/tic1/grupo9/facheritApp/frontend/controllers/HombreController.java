@@ -54,9 +54,6 @@ public class HombreController implements Initializable {
     private ChoiceBox<String> typeBox;
 
     @FXML
-    private ComboBox<String> typeBox2;
-
-    @FXML
     private ChoiceBox<String> colorBox;
 
     @FXML
@@ -69,7 +66,6 @@ public class HombreController implements Initializable {
     private Spinner<Double> price2;
 
 
-    private ObservableList<String> typesItems;
 
     private void showSelection(){
         typeBox.getItems().addAll(FXCollections.observableArrayList("pantalon","camisa","calzado","calzado deportivo","abrigo","buzo","medias",
@@ -115,38 +111,6 @@ public class HombreController implements Initializable {
 
     }
 
-    public void pantalon(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        agregar(cls.getByGenderAndType("Masculino", "pantalon"));
-       // List<Clothes> pantalones2 = cls.getClothesRepo().findAll(ClotheSpecification.builder().gender("Masculino").type("pantalon").build());
-
-    }
-
-    public void camisa(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        agregar(cls.getByGenderAndType("Masculino", "camisa"));
-
-    }
-    public void abrigos(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        agregar(cls.getByGenderAndType("Masculino", "abrigo"));
-
-    }
-    public void calzado(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        agregar(cls.getByGenderAndType("Masculino", "calzado"));
-
-    }
-    public void remera(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        agregar(cls.getByGenderAndType("Masculino", "remera"));
-
-    }
-    public void bermuda(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        agregar(cls.getByGenderAndType("Masculino", "bermuda"));
-
-    }
 
     private void agregar(List<Clothes> prenda){
         System.out.println(prenda.size());
