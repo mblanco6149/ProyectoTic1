@@ -71,7 +71,7 @@ public class HombreController implements Initializable {
 
     private void showSelection(){
         typeBox.getItems().addAll(FXCollections.observableArrayList("pantalon","camisa","calzado","calzado deportivo","abrigo","buzo","medias",
-                "ropa interior","bermuda","remera","accesorio","short"));
+                "ropa interior","bermuda","remera","accesorio","short", null));
         typeBox.getSelectionModel().selectedItemProperty().addListener(
                 (v,oldvalue,newv) -> {
                     if(newv=="calzado" || newv =="calzado deportivo"){
@@ -79,11 +79,11 @@ public class HombreController implements Initializable {
                         sizeBox.getItems().addAll(FXCollections.observableArrayList("38","39","40","41","42"));
                     }else{
                         sizeBox.getItems().clear();
-                        sizeBox.getItems().addAll(FXCollections.observableArrayList("S","M","L","XL"));
+                        sizeBox.getItems().addAll(FXCollections.observableArrayList("S","M","L","XL",null));
                     }
                 }
         );
-        colorBox.getItems().addAll(FXCollections.observableArrayList("negro","rojo","blanco","amarillo","azul","anaranjado"));
+        colorBox.getItems().addAll(FXCollections.observableArrayList("negro","rojo","blanco","amarillo","azul","anaranjado",null));
 
 
 
