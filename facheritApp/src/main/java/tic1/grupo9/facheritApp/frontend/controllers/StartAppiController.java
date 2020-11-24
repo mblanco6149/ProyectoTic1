@@ -205,6 +205,7 @@ public class StartAppiController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
     }
+
     @FXML
     public void mujer(javafx.event.ActionEvent actionEvent) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(MujerController.class.getResource("mujer.fxml"));
@@ -217,7 +218,7 @@ public class StartAppiController implements Initializable {
     }
     @FXML
     public void niños(javafx.event.ActionEvent actionEvent) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(NiñosController.class.getResource("niños.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(NiñosController.class.getResource("infante.fxml"));
         fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
         Scene tableViewScene = new Scene(fxmlLoader.load());
 
