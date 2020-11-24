@@ -23,25 +23,25 @@
    <children>
       <ScrollPane layoutY="69.0" prefHeight="331.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
          <content>
-            <GridPane fx:id="grid" gridLinesVisible="true" prefHeight="900.0" prefWidth="920.0">
+            <GridPane fx:id="grid" gridLinesVisible="true" prefHeight="886.0" prefWidth="956.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
          </content>
       </ScrollPane>
-      <ToolBar fx:id="login_button" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="923.0">
+      <ToolBar fx:id="login_button" layoutX="21.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="958.0">
         <items>
-            <Button fx:id="ingresar_reg_button" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="136.0" style="-fx-alignment: right;" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="ingresar_reg_button" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="452.0" layoutY="11.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="151.0" style="-fx-alignment: right;" text="Ingresar/Registrarse" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
@@ -75,7 +75,7 @@
             <Insets left="515.0" />
          </padding>
       </MenuBar>
-      <HBox prefHeight="30.0" prefWidth="923.0" AnchorPane.topAnchor="40.0">
+      <HBox prefHeight="30.0" prefWidth="979.0" AnchorPane.topAnchor="40.0">
          <children>
             <Hyperlink onAction="#hombre" prefHeight="23.0" prefWidth="398.0" text="Hombre" textFill="#161616">
                <padding>
@@ -94,8 +94,6 @@
             </Hyperlink>
          </children>
       </HBox>
-       <Button fx:id="nextButton" layoutX="916.0" layoutY="677.0" mnemonicParsing="false" onAction="#next" text="Next" />
-       <Button fx:id="backButton" layoutX="0.0" layoutY="677.0" mnemonicParsing="false" onAction="#back" text="Back" />
 
    </children>
 </AnchorPane>

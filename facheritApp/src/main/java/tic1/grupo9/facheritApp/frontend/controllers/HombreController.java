@@ -113,10 +113,9 @@ public class HombreController implements Initializable {
 
 
     private void agregar(List<Clothes> prenda){
-        //System.out.println(prenda.size());
         int count = 0;
         int temp = prenda.size()-1;
-        for(int i =0; i<(prenda.size()/2); i++) {
+        for(int i =0; i< ((double) prenda.size())/2; i++) {
             count++;
             if (count > gridPane.getRowCount()) {
                 RowConstraints con = new RowConstraints();
@@ -137,7 +136,6 @@ public class HombreController implements Initializable {
                 content.getChildren().add(image);
                 content.getChildren().add(textArea);
                 content.getChildren().add(buyButton);
-                //System.out.println(clothTemp.getType());
                 temp--;
             }
         }
