@@ -3,23 +3,29 @@ package tic1.grupo9.facheritApp.frontend.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import tic1.grupo9.facheritApp.FacheritAppApplication;
 import tic1.grupo9.facheritApp.backend.services.ClothesService;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
+import tic1.grupo9.facheritApp.commons.entities.Colour;
+import tic1.grupo9.facheritApp.commons.entities.Size;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,33 +39,61 @@ public class MujerController implements Initializable {
     @Autowired
     ClothesService cls;
 
+    @Autowired
+    BuyProductController bpc;
+
     @FXML
     GridPane gridPane;
 
     @FXML
-    private Hyperlink mujer;
+    private ChoiceBox<String> typeBox;
 
     @FXML
-    private AnchorPane parteRopa;
+    private ChoiceBox<String> colorBox;
 
     @FXML
-    private ChoiceBox<String> colourChoiceBox;
+    private ChoiceBox<String> sizeBox;
 
-    private List<Clothes> womenClothes;
+    @FXML
+    private Spinner<Double> price1;
+
+    @FXML
+    private Spinner<Double> price2;
+
+    private List<Clothes> clothesList;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<String> colourList = new ArrayList<>();
-        colourList.add("blanco");colourList.add("negro");colourList.add("azul");colourList.add("verde");colourList.add("rojo");colourList.add("beige");colourList.add("gris");
-        ObservableList<String> colourObsList= FXCollections.observableArrayList(colourList);
-        colourChoiceBox.setItems(colourObsList);
+        showSelection();
+        clothesList= cls.getByGender("Femenino");
+        agregar(clothesList);
+
+
     }
 
-    public void filtrar(List<Clothes> lista) {
+    private void showSelection(){
+        typeBox.getItems().addAll(FXCollections.observableArrayList("pantalon","camisa","vestido","remera","abrigo","buzo","pollera",
+                "ropa interior","medias","calzado deportivo","accesorio","calzado"));
+        typeBox.getSelectionModel().selectedItemProperty().addListener(
+                (v,oldvalue,newv) -> {
+                    if(newv=="calzado" || newv =="calzado deportivo"){
+                        sizeBox.getItems().clear();
+                        sizeBox.getItems().addAll(FXCollections.observableArrayList("33","34","35","36","37","38","39","40","41"));
+                    }else{
+                        sizeBox.getItems().clear();
+                        sizeBox.getItems().addAll(FXCollections.observableArrayList("XS","S","M","L","XL"));
+                    }
+                }
+        );
+        colorBox.getItems().addAll(FXCollections.observableArrayList("negro","rojo","blanco","amarillo","azul","anaranjado"));
+    }
+
+
+    private void agregar(List<Clothes> prenda){
         int count = 0;
-        int temp = lista.size() - 1;
-        for (int i = 0; i < (lista.size() / 2); i++) {
+        int temp = prenda.size()-1;
+        for(int i =0; i< ((double) prenda.size())/2; i++) {
             count++;
             if (count > gridPane.getRowCount()) {
                 RowConstraints con = new RowConstraints();
@@ -67,109 +101,210 @@ public class MujerController implements Initializable {
                 gridPane.getRowConstraints().add(con);
             }
             for (int j = 0; j < 2; j++) {
+                if(temp<0)return;
                 VBox content = new VBox();
                 gridPane.add(content, j, i);
                 content.setAlignment(Pos.CENTER);
                 content.setPadding(new Insets(5, 5, 5, 5));
-                Clothes clothTemp = lista.get(temp);
+                Clothes clothTemp = prenda.get(temp);
                 ImageView image = clothTemp.getPicture();
                 Button buyButton = new Button("Buy");
+
+                buyButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override public void handle(ActionEvent e) {
+
+                        try {
+                            buy(clothTemp,e);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+
+                    }
+                });
+
                 Label textArea = new Label();
                 textArea.setText(clothTemp.toString());
                 content.getChildren().add(image);
                 content.getChildren().add(textArea);
                 content.getChildren().add(buyButton);
-                System.out.println(clothTemp.getType());
                 temp--;
+            }
+        }
+
+    }
+
+    public void buy(Clothes c,javafx.event.ActionEvent actionEvent) throws IOException {
+
+
+        bpc.setClothes(c);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(BuyProductController.class.getResource("BuyProduct.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+
+
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    @FXML
+    public void hombre(javafx.event.ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(MujerController.class.getResource("mujer.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+
+    }
+
+    @FXML
+    public void niños(javafx.event.ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(NiñosController.class.getResource("niños.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+
+    }
+
+
+    public void filter(javafx.event.ActionEvent actionEvent) throws IOException{
+        String tipoSeleccionado = typeBox.getValue();
+        String talleSeleccionado = sizeBox.getValue();
+        String colorSeleccionado = colorBox.getValue();
+        double precio1 = price1.getValue();
+        double precio2 = price2.getValue();
+
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && precio1==0.0 && precio2==0.0){
+            gridPane.getChildren().clear();
+            System.out.println("hola");
+            agregar(cls.getByGenderAndType("Femenino", tipoSeleccionado));
+            return;
+        }
+
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && precio1==0.0 && precio2==0.0){
+            gridPane.getChildren().clear();
+            List<Clothes> list = cls.getByGenderAndType("Femenino", tipoSeleccionado);
+            filterBySize(list,talleSeleccionado);
+            agregar(list);
+            return;
+        }
+
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && precio1==0.0 && precio2==0.0){
+            gridPane.getChildren().clear();
+            List<Clothes> list = cls.getByGenderAndType("Femenino", tipoSeleccionado);
+            filterByColour(list,colorSeleccionado);
+            filterBySize(list,talleSeleccionado);
+            agregar(list);
+            return;
+        }
+
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && price1!=null && price2!=null){
+            gridPane.getChildren().clear();
+            List<Clothes> list = cls.getByGenderAndTypeAndPriceBetween("Femenino", tipoSeleccionado,precio1, precio2);
+
+            filterByColour(list,colorSeleccionado);
+            filterBySize(list,talleSeleccionado);
+            agregar(list);
+            return;
+        }
+
+        if(tipoSeleccionado==null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByGenderAndPriceBetween("Femenino", precio1, precio2));
+            return;
+        }
+
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByGenderAndTypeAndPriceBetween("Femenino", tipoSeleccionado, precio1, precio2));
+            return;
+        }
+
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado!=null && price1==null && price2==null){
+            gridPane.getChildren().clear();
+            List<Clothes> list = cls.getByGenderAndType("Femenino", tipoSeleccionado);
+            filterByColour(list,colorSeleccionado);
+            agregar(list);
+            return;
+        }
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && price1!=null && price2!=null){
+            gridPane.getChildren().clear();
+            List<Clothes> list = cls.getByGenderAndTypeAndPriceBetween("Femenino", tipoSeleccionado,precio1,precio2);
+            filterBySize(list, talleSeleccionado);
+            agregar(list);
+            
+        }
+
+
+
+    }
+
+    public void filterByColour(List<Clothes> list,String colorSeleccionado){
+
+        for (Clothes c :clothesList){
+            boolean hasColour = false;
+            for(Colour colour : c.getColor()){
+                if(colour.getColours().equals(colorSeleccionado)){
+                    hasColour=true;
+                }
+            }
+            if(!hasColour) {
+                if (list.contains(c)) {
+                    list.remove(c);
+                }
+            }
+        }
+
+
+    }
+
+    public  void filterBySize(List<Clothes> list , String talleSeleccionado){
+        for (Clothes c :clothesList){
+            boolean hasSize = false;
+            for(Size s : c.getSize()){
+                if(s.getSizes().equals(talleSeleccionado)){
+                    hasSize=true;
+                }
+            }
+            if(!hasSize) {
+                if (list.contains(c)) {
+                    list.remove(c);
+                }
             }
         }
     }
 
+    @FXML
+    public void carrito(javafx.event.ActionEvent actionEvent) throws IOException{
 
-    public void pantalon(javafx.event.ActionEvent actionEvent) throws IOException {
-        gridPane.getChildren().clear();
-        List<Clothes> pantalones = cls.getByGenderAndType("Femenino", "pantalon");
-        filtrar(pantalones);
+        FXMLLoader fxmlLoader = new FXMLLoader(CarritoControler.class.getResource("Carrito.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+
     }
 
-    public void abrigo(javafx.event.ActionEvent actionEvent) throws IOException {
-        gridPane.getChildren().clear();
-        List<Clothes> abrigos = cls.getByGenderAndType("Femenino", "abrigo");
-        filtrar(abrigos);
-    }
+    @FXML
+    public void login(javafx.event.ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginUserController.class.getResource("loginUser.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
 
-    public void vestido(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> vestidos = cls.getByGenderAndType("Femenino", "vestido");
-        filtrar(vestidos);
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
-
-    public void calzado(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> calzados = cls.getByGenderAndType("Femenino", "calzado");
-        filtrar(calzados);
-    }
-
-    public void buzo(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> buzos = cls.getByGenderAndType("Femenino", "buzo");
-        filtrar(buzos);
-    }
-
-    public void jean(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> jeans = cls.getByGenderAndType("Femenino", "jean");
-        filtrar(jeans);
-    }
-
-    public void camisa(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> camisas = cls.getByGenderAndType("Femenino", "camisa");
-        filtrar(camisas);
-    }
-
-    public void remera(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> remeras = cls.getByGenderAndType("Femenino", "remera");
-        filtrar(remeras);
-    }
-
-    public void shortt(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> shorts = cls.getByGenderAndType("Femenino", "short");
-        filtrar(shorts);
-    }
-
-    public void bermuda(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> bermudas = cls.getByGenderAndType("Femenino", "bermuda");
-        filtrar(bermudas);
-    }
-
-    public void ropaInterior(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> tangas = cls.getByGenderAndType("Femenino", "ropainterior");
-        filtrar(tangas);
-    }
-
-    public void calzadoDeportivo(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> deportivos = cls.getByGenderAndType("Femenino", "deportivo");
-        filtrar(deportivos);
-    }
-
-    public void media(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> medias = cls.getByGenderAndType("Femenino", "medias");
-        filtrar(medias);
-    }
-
-    public void accesorio(javafx.event.ActionEvent actionEvent) throws IOException{
-        gridPane.getChildren().clear();
-        List<Clothes> accesorios = cls.getByGenderAndType("Femenino", "accesorio");
-        filtrar(accesorios);
-    }
-
 
 
 
