@@ -54,6 +54,9 @@ public class HombreController implements Initializable {
     private ChoiceBox<String> typeBox;
 
     @FXML
+    private ComboBox<String> typeBox2;
+
+    @FXML
     private ChoiceBox<String> colorBox;
 
     @FXML
@@ -66,64 +69,26 @@ public class HombreController implements Initializable {
     private Spinner<Double> price2;
 
 
-    private List<Clothes> masculineClothes;
-    private ObservableList<String> typesList;
+    private ObservableList<String> typesItems;
 
-    public void showSelection(){
-        typesList.addAll("pantalon","camisa","calzado","calzado deportivo","abrigo","buzo","medias",
-                "ropa interior","bermuda","remera","accesorio","short");
-        typeBox.setItems(typesList);
+    private void showSelection(){
+        typeBox.getItems().addAll(FXCollections.observableArrayList("pantalon","camisa","calzado","calzado deportivo","abrigo","buzo","medias",
+                "ropa interior","bermuda","remera","accesorio","short"));
+        colorBox.getItems().addAll(FXCollections.observableArrayList("negro","rojo","blanco","amarillo","azul","anaranjado"));
+        sizeBox.getItems().addAll(FXCollections.observableArrayList("S","M","L","XL"));
+
+
+
+
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        masculineClothes = cls.getByGender("Masculino");
-        int temp = masculineClothes.size()-1;
-        //scrollPane.setContent(gridPane);
-        System.out.println(gridPane.getRowCount());
-
-        for(int i =0; i<(masculineClothes.size()/2); i++){
-            for(int j=0; j<2; j++){
-                VBox content = new VBox();
-                gridPane.add(content,j,i);
-                content.setAlignment(Pos.CENTER);
-                content.setPadding(new Insets(5, 5, 5, 5));
-                Clothes clothTemp = masculineClothes.get(temp);
-                ImageView image = clothTemp.getPicture();
-                Button buyButton = new Button("Buy");
-                Label textArea = new Label();
-                textArea.setText(clothTemp.toString());
-                content.getChildren().add(image);
-                content.getChildren().add(textArea);
-                content.getChildren().add(buyButton);
-                temp--;
-            }
-        }
-
-        /*VBox content = new VBox();
-        gridPane.add(content,0,0);
-        content.setAlignment(Pos.CENTER);
-        content.setPadding(new Insets(5, 0, 2, 0));
-        Clothes clothTemp = masculineClothes.get(0);
-        ImageView image = cloth.getPicture();
-        Button buyButton = new Button("Buy");
-        Label textArea = new Label();
-        textArea.setText(cloth.toString());
-        content.getChildren().add(image);
-        content.getChildren().add(textArea);
-        content.getChildren().add(buyButton);
-        */
-
-
-
-
-
-
-
-
         showSelection();
+        agregar(cls.getByGender("Masculino"));
+
+
 
     }
 
@@ -183,11 +148,11 @@ public class HombreController implements Initializable {
 
     }
 
-    private void agregar(List<Clothes> pantalones){
-        System.out.println(pantalones.size());
+    private void agregar(List<Clothes> prenda){
+        System.out.println(prenda.size());
         int count = 0;
-        int temp = pantalones.size()-1;
-        for(int i =0; i<(pantalones.size()/2); i++) {
+        int temp = prenda.size()-1;
+        for(int i =0; i<(prenda.size()/2); i++) {
             count++;
             if (count > gridPane.getRowCount()) {
                 RowConstraints con = new RowConstraints();
@@ -200,7 +165,7 @@ public class HombreController implements Initializable {
                 gridPane.add(content, j, i);
                 content.setAlignment(Pos.CENTER);
                 content.setPadding(new Insets(5, 5, 5, 5));
-                Clothes clothTemp = pantalones.get(temp);
+                Clothes clothTemp = prenda.get(temp);
                 ImageView image = clothTemp.getPicture();
                 Button buyButton = new Button("Buy");
                 Label textArea = new Label();

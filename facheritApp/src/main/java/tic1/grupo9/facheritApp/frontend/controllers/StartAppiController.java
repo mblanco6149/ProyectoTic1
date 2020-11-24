@@ -117,7 +117,7 @@ public class StartAppiController implements Initializable {
 
     public void agregarCLothes() {
 
-        int k = clothesToShow.size()-1-15*pagina;
+        int k = clothesToShow.size()-1;
             for (int i = 0; i < 5; i++){
                 for (int j = 0; j < 3; j++) {
                     if(k<0){
