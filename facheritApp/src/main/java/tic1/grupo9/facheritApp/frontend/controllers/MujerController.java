@@ -240,7 +240,7 @@ public class MujerController implements Initializable {
             List<Clothes> list = cls.getByGenderAndTypeAndPriceBetween("Femenino", tipoSeleccionado,precio1,precio2);
             filterBySize(list, talleSeleccionado);
             agregar(list);
-            
+
         }
 
 
