@@ -20,8 +20,8 @@
    <children>
       <ToolBar layoutX="2.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="942.0">
         <items>
-          <Button mnemonicParsing="false" text="Ingresar/Registrarse" />
-            <Button mnemonicParsing="false" text="Carrito" />
+          <Button mnemonicParsing="false" onAction="#login" text="Ingresar/Registrarse" />
+            <Button mnemonicParsing="false" onAction="#carrito" text="Carrito" />
         </items>
       </ToolBar>
       <HBox alignment="TOP_CENTER" layoutY="34.0" prefHeight="39.0" prefWidth="944.0">

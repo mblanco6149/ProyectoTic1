@@ -117,7 +117,7 @@ public class StartAppiController implements Initializable {
 
     public void agregarCLothes() {
 
-        int k = clothesToShow.size()-1;
+        int k = clothesToShow.size()-1-pagina*15;
             for (int i = 0; i < 5; i++){
                 for (int j = 0; j < 3; j++) {
                     if(k<0){
@@ -168,7 +168,7 @@ public class StartAppiController implements Initializable {
 
     public void buy(int i,javafx.event.ActionEvent actionEvent) throws IOException {
 
-        List<Clothes> clothesToShow = cls.getClothesRepo().findAll();
+       // List<Clothes> clothesToShow = cls.getClothesRepo().findAll();
         Clothes clothes = clothesToShow.get(i);
         bpc.setClothes(clothes);
 

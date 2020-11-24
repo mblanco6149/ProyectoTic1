@@ -37,6 +37,8 @@ public class HombreController implements Initializable {
 
     @Autowired
     ClothesService cls;
+    @Autowired
+    BuyProductController bpc;
 
     @FXML
     private Hyperlink mujer;
@@ -65,14 +67,23 @@ public class HombreController implements Initializable {
     @FXML
     private Spinner<Double> price2;
 
-
+    private List<Clothes> clothesList;
 
     private void showSelection(){
         typeBox.getItems().addAll(FXCollections.observableArrayList("pantalon","camisa","calzado","calzado deportivo","abrigo","buzo","medias",
                 "ropa interior","bermuda","remera","accesorio","short"));
+        typeBox.getSelectionModel().selectedItemProperty().addListener(
+                (v,oldvalue,newv) -> {
+                    if(newv=="calzado" || newv =="calzado deportivo"){
+                        sizeBox.getItems().clear();
+                        sizeBox.getItems().addAll(FXCollections.observableArrayList("38","39","40","41","42"));
+                    }else{
+                        sizeBox.getItems().clear();
+                        sizeBox.getItems().addAll(FXCollections.observableArrayList("S","M","L","XL"));
+                    }
+                }
+        );
         colorBox.getItems().addAll(FXCollections.observableArrayList("negro","rojo","blanco","amarillo","azul","anaranjado"));
-        sizeBox.getItems().addAll(FXCollections.observableArrayList("S","M","L","XL"));
-
 
 
 
@@ -82,7 +93,8 @@ public class HombreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showSelection();
-        agregar(cls.getByGender("Masculino"));
+        clothesList= cls.getByGender("Masculino");
+        agregar(clothesList);
 
 
 
@@ -90,7 +102,7 @@ public class HombreController implements Initializable {
 
     @FXML
     public void mujer(javafx.event.ActionEvent actionEvent) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginUserController.class.getResource("mujer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MujerController.class.getResource("mujer.fxml"));
         fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
         Scene tableViewScene = new Scene(fxmlLoader.load());
 
@@ -101,7 +113,7 @@ public class HombreController implements Initializable {
     }
     @FXML
     public void niños(javafx.event.ActionEvent actionEvent) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginUserController.class.getResource("niños.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(NiñosController.class.getResource("niños.fxml"));
         fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
         Scene tableViewScene = new Scene(fxmlLoader.load());
 
@@ -131,6 +143,19 @@ public class HombreController implements Initializable {
                 Clothes clothTemp = prenda.get(temp);
                 ImageView image = clothTemp.getPicture();
                 Button buyButton = new Button("Buy");
+
+                buyButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override public void handle(ActionEvent e) {
+
+                        try {
+                            buy(clothTemp,e);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+
+                    }
+                });
+
                 Label textArea = new Label();
                 textArea.setText(clothTemp.toString());
                 content.getChildren().add(image);
@@ -140,6 +165,22 @@ public class HombreController implements Initializable {
             }
         }
 
+    }
+    public void buy(Clothes c,javafx.event.ActionEvent actionEvent) throws IOException {
+
+
+        bpc.setClothes(c);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(BuyProductController.class.getResource("BuyProduct.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+
+
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     public void filter(javafx.event.ActionEvent actionEvent) throws IOException{
@@ -158,19 +199,28 @@ public class HombreController implements Initializable {
 
         if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && precio1==0.0 && precio2==0.0){
             gridPane.getChildren().clear();
-            agregar(cls.getByGenderAndTypeAndSize("Masculino", tipoSeleccionado, talleSeleccionado));
+            List<Clothes> list = cls.getByGenderAndType("Masculino", tipoSeleccionado);
+            filterBySize(list,talleSeleccionado);
+            agregar(list);
             return;
         }
 
         if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && precio1==0.0 && precio2==0.0){
             gridPane.getChildren().clear();
-            agregar(cls.getByGenderAndTypeAndSizeAndColor("Masculino", tipoSeleccionado, talleSeleccionado, colorSeleccionado));
+            List<Clothes> list = cls.getByGenderAndType("Masculino", tipoSeleccionado);
+            filterByColour(list,colorSeleccionado);
+            filterBySize(list,talleSeleccionado);
+            agregar(list);
             return;
         }
 
         if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && price1!=null && price2!=null){
             gridPane.getChildren().clear();
-            agregar(cls.getByGenderAndTypeAndSizeAndColorAndPriceBetween("Masculino", tipoSeleccionado, talleSeleccionado, colorSeleccionado, precio1, precio2));
+            List<Clothes> list = cls.getByGenderAndTypeAndPriceBetween("Masculino", tipoSeleccionado,precio1, precio2);
+
+            filterByColour(list,colorSeleccionado);
+            filterBySize(list,talleSeleccionado);
+            agregar(list);
             return;
         }
 
@@ -186,8 +236,82 @@ public class HombreController implements Initializable {
             return;
         }
 
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado!=null && price1==null && price2==null){
+            gridPane.getChildren().clear();
+            List<Clothes> list = cls.getByGenderAndType("Masculino", tipoSeleccionado);
+            filterByColour(list,colorSeleccionado);
+            agregar(list);
+            return;
+        }
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && price1!=null && price2!=null){
+            gridPane.getChildren().clear();
+            List<Clothes> list = cls.getByGenderAndTypeAndPriceBetween("Masculino", tipoSeleccionado,precio1,precio2);
+            filterBySize(list, talleSeleccionado);
+            agregar(list);
+            return;
+        }
 
 
+
+    }
+
+    public void filterByColour(List<Clothes> list,String colorSeleccionado){
+
+        for (Clothes c :clothesList){
+            boolean hasColour = false;
+            for(Colour colour : c.getColor()){
+                if(colour.getColours().equals(colorSeleccionado)){
+                    hasColour=true;
+                }
+            }
+            if(hasColour==false) {
+                if (list.contains(c)) {
+                    list.remove(c);
+                }
+            }
+        }
+
+
+    }
+
+    public  void filterBySize(List<Clothes> list , String talleSeleccionado){
+        for (Clothes c :clothesList){
+            boolean hasSize = false;
+            for(Size s : c.getSize()){
+                if(s.getSizes().equals(talleSeleccionado)){
+                    hasSize=true;
+                }
+            }
+            if(hasSize==false) {
+                if (list.contains(c)) {
+                    list.remove(c);
+                }
+            }
+        }
+    }
+
+    @FXML
+    public void carrito(javafx.event.ActionEvent actionEvent) throws IOException{
+
+        FXMLLoader fxmlLoader = new FXMLLoader(CarritoControler.class.getResource("Carrito.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+
+    }
+
+    @FXML
+    public void login(javafx.event.ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginUserController.class.getResource("loginUser.fxml"));
+        fxmlLoader.setControllerFactory(FacheritAppApplication.getAppiContext()::getBean);
+        Scene tableViewScene = new Scene(fxmlLoader.load());
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
 

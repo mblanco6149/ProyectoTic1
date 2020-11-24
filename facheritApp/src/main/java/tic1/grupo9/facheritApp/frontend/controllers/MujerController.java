@@ -1,11 +1,14 @@
 package tic1.grupo9.facheritApp.frontend.controllers;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -20,6 +23,7 @@ import tic1.grupo9.facheritApp.commons.entities.Clothes;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -38,12 +42,18 @@ public class MujerController implements Initializable {
     @FXML
     private AnchorPane parteRopa;
 
+    @FXML
+    private ChoiceBox<String> colourChoiceBox;
+
     private List<Clothes> womenClothes;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        List<String> colourList = new ArrayList<>();
+        colourList.add("blanco");colourList.add("negro");colourList.add("azul");colourList.add("verde");colourList.add("rojo");colourList.add("beige");colourList.add("gris");
+        ObservableList<String> colourObsList= FXCollections.observableArrayList(colourList);
+        colourChoiceBox.setItems(colourObsList);
     }
 
     public void filtrar(List<Clothes> lista) {
