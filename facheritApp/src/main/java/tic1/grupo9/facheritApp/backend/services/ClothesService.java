@@ -53,6 +53,25 @@ public class ClothesService {
         return clothesRepo.findAllByGenderAndType(gender, type);
     }
 
+    public List<Clothes> getByGenderAndTypeAndSize(String gender, String type, String size){
+        return clothesRepo.findAllByGenderAndTypeAndSize(gender, type, size);
+    }
+
+    public List<Clothes> getByGenderAndTypeAndSizeAndColor(String gender, String type, String size, String color){
+        return clothesRepo.findAllByGenderAndTypeAndSizeAndColor(gender, type, size, color);
+    }
+
+    public List<Clothes> getByGenderAndTypeAndSizeAndColorAndPriceBetween(String gender, String type, String size, String color,double price1, double price2){
+        return clothesRepo.findAllByGenderAndTypeAndSizeAndColorAndPriceBetween(gender, type, size, color, price1, price2);
+    }
+
+    public List<Clothes> getByGenderAndPriceBetween(String gender, double price1, double price2){
+        return clothesRepo.findAllByGenderAndPriceBetween(gender, price1, price2);
+    }
+
+    public List<Clothes> getByGenderAndTypeAndPriceBetween(String gender, String type, double price1, double price2){
+        return clothesRepo.findAllByGenderAndTypeAndPriceBetween(gender, type, price1, price2);
+    }
     public Clothes getByLastId(){
         return clothesRepo.findTopByOrderByIdDesc();
     }

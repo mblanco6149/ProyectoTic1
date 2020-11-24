@@ -35,7 +35,23 @@ public interface ClothesRepo extends JpaRepository<Clothes,Integer>, JpaSpecific
     @Query("SELECT c FROM Clothes c WHERE c.gender = ?1 and c.type = ?2")
     public List<Clothes> findAllByGenderAndType(String gender, String type);
 
+    public List<Clothes> findAllByGenderAndTypeAndSize(String gender, String type, String size);
 
+    public List<Clothes> findAllByGenderAndTypeAndSizeAndColor(String gender, String type, String size, String color);
+
+    public List<Clothes> findAllByGenderAndTypeAndSizeAndColorAndPriceBetween(String gender, String type, String size, String color, double price1, double price2);
+
+    public List<Clothes> findAllByGenderAndSize(String gender, String size);
+
+    public List<Clothes> findAllByGenderAndSizeAndColor(String gender, String type, String color);
+
+    public List<Clothes> findAllByGenderAndSizeAndPriceBetween(String gender, String size, double price1, double price2);
+
+    public List<Clothes> findAllByGenderAndSizeAndColorAndPriceBetween(String gender, String size, String color, double price1, double price2);
+
+    public List<Clothes> findAllByGenderAndPriceBetween(String gender, double price1, double price2);
+
+    public List<Clothes> findAllByGenderAndTypeAndPriceBetween(String gender, String type, double price1, double price2);
 
     public Clothes findTopByOrderByIdDesc();
 

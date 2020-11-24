@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,7 +24,7 @@
             <Button mnemonicParsing="false" text="Carrito" />
         </items>
       </ToolBar>
-      <HBox alignment="TOP_CENTER" layoutY="34.0" prefHeight="26.0" prefWidth="944.0">
+      <HBox alignment="TOP_CENTER" layoutY="34.0" prefHeight="39.0" prefWidth="944.0">
          <children>
             <Hyperlink text="Hombre" textFill="#ed0e0e">
                <HBox.margin>
@@ -41,82 +43,25 @@
             </Hyperlink>
          </children>
       </HBox>
-      <HBox layoutY="64.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="944.0">
-         <children>
-            <Hyperlink fx:id="abrigos" text="Abrigos" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="buzos" text="Buzos" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="camisas" onAction="#camisa" text="Camisas" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="jeans" text="Jeans" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="pantalones" onAction="#pantalon" text="Pantalones" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="remeras" text="Remeras" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="shorts" text="Shorts" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="bermudas" text="Bermudas" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink text="Ropa Interio" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="ropaInterior" onAction="#calzado" text="Calzado" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="CalzadoDeportivo" text="Calzado Depotivo" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="medias" text="Medias" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-            <Hyperlink fx:id="accesorios" text="Accesorios" textFill="#131313">
-               <HBox.margin>
-                  <Insets left="4.0" right="4.0" top="6.0" />
-               </HBox.margin>
-            </Hyperlink>
-         </children>
-      </HBox>
-      <HBox layoutX="2.0" layoutY="106.0" prefHeight="61.0" prefWidth="942.0" />
-      <SplitPane dividerPositions="0.29797979797979796" layoutY="106.0" prefHeight="557.0" prefWidth="944.0">
+      <SplitPane dividerPositions="0.29797979797979796" layoutY="73.0" prefHeight="590.0" prefWidth="944.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="556.0" prefWidth="94.0">
                <children>
-                  <ChoiceBox id="typeBox" layoutX="13.0" layoutY="88.0" prefWidth="150.0" />
-                  <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="74.0" text="Filtrado" />
+                  <ChoiceBox id="typeBox" fx:id="typeBox" layoutX="13.0" layoutY="48.0" prefWidth="150.0" />
+                  <Label layoutX="63.0" layoutY="14.0" prefHeight="18.0" prefWidth="74.0" text="Filtrado" textAlignment="CENTER" />
+                  <ChoiceBox id="typeBox" fx:id="sizeBox" layoutX="13.0" layoutY="108.0" prefWidth="150.0" />
+                  <ChoiceBox id="typeBox" fx:id="colorBox" layoutX="13.0" layoutY="171.0" prefWidth="150.0" />
+                  <Button fx:id="filterButton" layoutX="63.0" layoutY="294.0" mnemonicParsing="false" onAction="#filter" text="Filter" />
+                   <Spinner fx:id="price1" layoutX="14.0" layoutY="243.0" prefHeight="27.0" prefWidth="91.0">
+                       <valueFactory>
+                           <SpinnerValueFactory.DoubleSpinnerValueFactory max="5000" min="0" />
+                       </valueFactory>
+                   </Spinner>
+                  <Spinner fx:id="price2" layoutX="109.0" layoutY="243.0" prefHeight="27.0" prefWidth="80.0" >
+                    <valueFactory>
+                        <SpinnerValueFactory.DoubleSpinnerValueFactory max="5000" min="0" />
+                    </valueFactory>
+                  </Spinner>
                </children></AnchorPane>
           <AnchorPane fx:id="parteRopa" minHeight="0.0" minWidth="0.0" prefHeight="556.0" prefWidth="734.0">
                <children>

@@ -1,5 +1,7 @@
 package tic1.grupo9.facheritApp.frontend.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,10 +11,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -24,12 +23,14 @@ import org.springframework.stereotype.Controller;
 import tic1.grupo9.facheritApp.FacheritAppApplication;
 import tic1.grupo9.facheritApp.backend.services.ClotheSpecification;
 import tic1.grupo9.facheritApp.backend.services.ClothesService;
-import tic1.grupo9.facheritApp.commons.entities.Clothes;
+import tic1.grupo9.facheritApp.commons.entities.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 @Controller
 public class HombreController implements Initializable {
@@ -49,9 +50,31 @@ public class HombreController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
+    @FXML
+    private ChoiceBox<String> typeBox;
+
+    @FXML
+    private ChoiceBox<String> colorBox;
+
+    @FXML
+    private ChoiceBox<String> sizeBox;
+
+    @FXML
+    private Spinner<Double> price1;
+
+    @FXML
+    private Spinner<Double> price2;
+
+
     private List<Clothes> masculineClothes;
+    private ObservableList<String> typesList;
 
+    public void showSelection(){
+        typesList.addAll("pantalon","camisa","calzado","calzado deportivo","abrigo","buzo","medias",
+                "ropa interior","bermuda","remera","accesorio","short");
+        typeBox.setItems(typesList);
 
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -100,7 +123,7 @@ public class HombreController implements Initializable {
 
 
 
-
+        showSelection();
 
     }
 
@@ -167,6 +190,47 @@ public class HombreController implements Initializable {
                 temp--;
             }
         }
+
+    }
+
+    public void filter(javafx.event.ActionEvent actionEvent) throws IOException{
+        String tipoSeleccionado = typeBox.getSelectionModel().getSelectedItem();
+        String talleSeleccionado = sizeBox.getSelectionModel().getSelectedItem();
+        String colorSeleccionado = colorBox.getSelectionModel().getSelectedItem();
+        double precio1 = price1.getValue();
+        double precio2 = price2.getValue();
+
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && price1==null && price2==null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByGenderAndType("Masculino", tipoSeleccionado));
+        }
+
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && price1==null && price2==null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByGenderAndTypeAndSize("Masculino", tipoSeleccionado, talleSeleccionado));
+        }
+
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && price1==null && price2==null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByGenderAndTypeAndSizeAndColor("Masculino", tipoSeleccionado, talleSeleccionado, colorSeleccionado));
+        }
+
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && price1!=null && price2!=null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByGenderAndTypeAndSizeAndColorAndPriceBetween("Masculino", tipoSeleccionado, talleSeleccionado, colorSeleccionado, precio1, precio2));
+        }
+
+        if(tipoSeleccionado==null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByGenderAndPriceBetween("Masculino", precio1, precio2));
+        }
+
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByGenderAndTypeAndPriceBetween("Masculino", tipoSeleccionado, precio1, precio2));
+        }
+
+
 
     }
 
