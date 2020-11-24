@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import tic1.grupo9.facheritApp.FacheritAppApplication;
+import tic1.grupo9.facheritApp.backend.services.BrandService;
 import tic1.grupo9.facheritApp.backend.services.ClothesService;
 import tic1.grupo9.facheritApp.commons.entities.Clothes;
 import tic1.grupo9.facheritApp.commons.entities.Colour;
@@ -40,6 +41,9 @@ public class MujerController implements Initializable {
     ClothesService cls;
 
     @Autowired
+    BrandService bs;
+
+    @Autowired
     BuyProductController bpc;
 
     @FXML
@@ -55,12 +59,16 @@ public class MujerController implements Initializable {
     private ChoiceBox<String> sizeBox;
 
     @FXML
+    private ChoiceBox<String> marcaBox;
+
+    @FXML
     private Spinner<Double> price1;
 
     @FXML
     private Spinner<Double> price2;
 
     private List<Clothes> clothesList;
+    private String masculino;
 
     @FXML
     public void home(javafx.event.ActionEvent actionEvent) throws IOException {
@@ -190,17 +198,24 @@ public class MujerController implements Initializable {
         String tipoSeleccionado = typeBox.getValue();
         String talleSeleccionado = sizeBox.getValue();
         String colorSeleccionado = colorBox.getValue();
+        String marcaSeleccionado = marcaBox.getValue();
+        System.out.println(marcaSeleccionado);
         double precio1 = price1.getValue();
         double precio2 = price2.getValue();
 
-        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && precio1==0.0 && precio2==0.0){
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && precio1==0.0 && precio2==0.0 && marcaSeleccionado==null){
             gridPane.getChildren().clear();
-            System.out.println("hola");
             agregar(cls.getByGenderAndType("Femenino", tipoSeleccionado));
             return;
         }
 
-        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && precio1==0.0 && precio2==0.0){
+        if(tipoSeleccionado==null && talleSeleccionado==null && colorSeleccionado==null && precio1==0.0 && precio2==0.0 && marcaSeleccionado==null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByGender("Femenino"));
+            return;
+        }
+
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && precio1==0.0 && precio2==0.0 && marcaSeleccionado==null){
             gridPane.getChildren().clear();
             List<Clothes> list = cls.getByGenderAndType("Femenino", tipoSeleccionado);
             filterBySize(list,talleSeleccionado);
@@ -208,7 +223,7 @@ public class MujerController implements Initializable {
             return;
         }
 
-        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && precio1==0.0 && precio2==0.0){
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && precio1==0.0 && precio2==0.0 && marcaSeleccionado==null){
             gridPane.getChildren().clear();
             List<Clothes> list = cls.getByGenderAndType("Femenino", tipoSeleccionado);
             filterByColour(list,colorSeleccionado);
@@ -217,7 +232,7 @@ public class MujerController implements Initializable {
             return;
         }
 
-        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && price1!=null && price2!=null){
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado!=null && price1!=null && price2!=null && marcaSeleccionado==null){
             gridPane.getChildren().clear();
             List<Clothes> list = cls.getByGenderAndTypeAndPriceBetween("Femenino", tipoSeleccionado,precio1, precio2);
 
@@ -227,35 +242,66 @@ public class MujerController implements Initializable {
             return;
         }
 
-        if(tipoSeleccionado==null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null){
+        if(tipoSeleccionado==null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null && marcaSeleccionado==null){
             gridPane.getChildren().clear();
             agregar(cls.getByGenderAndPriceBetween("Femenino", precio1, precio2));
             return;
         }
 
-        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null){
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null && marcaSeleccionado==null){
             gridPane.getChildren().clear();
             agregar(cls.getByGenderAndTypeAndPriceBetween("Femenino", tipoSeleccionado, precio1, precio2));
             return;
         }
 
-        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado!=null && price1==null && price2==null){
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado!=null && price1==null && price2==null && marcaSeleccionado==null){
             gridPane.getChildren().clear();
             List<Clothes> list = cls.getByGenderAndType("Femenino", tipoSeleccionado);
             filterByColour(list,colorSeleccionado);
             agregar(list);
             return;
         }
-        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && price1!=null && price2!=null){
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && price1!=null && price2!=null && marcaSeleccionado==null){
             gridPane.getChildren().clear();
             List<Clothes> list = cls.getByGenderAndTypeAndPriceBetween("Femenino", tipoSeleccionado,precio1,precio2);
             filterBySize(list, talleSeleccionado);
             agregar(list);
-
+            return;
         }
-
-
-
+        if(tipoSeleccionado==null && talleSeleccionado==null && colorSeleccionado==null && precio1==0.0 && precio2==0.0 && marcaSeleccionado!=null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByBrand("Femenino", bs.getByName(marcaSeleccionado).get(0)));
+            return;
+        }
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && precio1==0.0 && precio2==0.0 && marcaSeleccionado!=null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByTypeAndBrand("Femenino",tipoSeleccionado,bs.getByName(marcaSeleccionado).get(0)));
+            return;
+        }
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null && marcaSeleccionado!=null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByTypeAndBrandAndPrice("Femenino",tipoSeleccionado, bs.getByName(marcaSeleccionado).get(0), precio1, precio2));
+            return;
+        }
+        if(tipoSeleccionado!=null && talleSeleccionado!=null && colorSeleccionado==null && price1!=null && price2!=null && marcaSeleccionado!=null){
+            gridPane.getChildren().clear();
+            List<Clothes> list = cls.getByTypeAndBrandAndPrice("Femenino", tipoSeleccionado,bs.getByName(marcaSeleccionado).get(0),precio1,precio2);
+            filterBySize(list, talleSeleccionado);
+            agregar(list);
+            return;
+        }
+        if(tipoSeleccionado!=null && talleSeleccionado==null && colorSeleccionado!=null && price1==null && price2==null && marcaSeleccionado!=null){
+            gridPane.getChildren().clear();
+            List<Clothes> list = cls.getByTypeAndBrandAndPrice("Femenino", tipoSeleccionado,bs.getByName(marcaSeleccionado).get(0),precio1,precio2);
+            filterByColour(list,colorSeleccionado);
+            agregar(list);
+            return;
+        }
+        if(tipoSeleccionado==null && talleSeleccionado==null && colorSeleccionado==null && price1!=null && price2!=null && marcaSeleccionado!=null){
+            gridPane.getChildren().clear();
+            agregar(cls.getByGenderAndBrandAndPrice("Femenino", bs.getByName(marcaSeleccionado).get(0), precio1, precio2));
+            return;
+        }
     }
 
     public void filterByColour(List<Clothes> list,String colorSeleccionado){

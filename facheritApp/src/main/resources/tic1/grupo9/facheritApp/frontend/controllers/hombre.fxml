@@ -52,12 +52,12 @@
                   <ChoiceBox id="typeBox" fx:id="sizeBox" layoutX="84.0" layoutY="107.0" prefWidth="150.0" />
                   <ChoiceBox id="typeBox" fx:id="colorBox" layoutX="84.0" layoutY="170.0" prefWidth="150.0" />
                   <Button fx:id="filterButton" layoutX="56.0" layoutY="380.0" mnemonicParsing="false" onAction="#filter" text="Filtrado" />
-                   <Spinner fx:id="price1" layoutX="14.0" layoutY="243.0" prefHeight="27.0" prefWidth="91.0">
+                   <Spinner fx:id="price1" layoutX="15.0" layoutY="316.0" prefHeight="27.0" prefWidth="91.0">
                        <valueFactory>
                            <SpinnerValueFactory.DoubleSpinnerValueFactory max="5000" min="0" />
                        </valueFactory>
                    </Spinner>
-                  <Spinner fx:id="price2" layoutX="109.0" layoutY="243.0" prefHeight="27.0" prefWidth="80.0">
+                  <Spinner fx:id="price2" layoutX="119.0" layoutY="316.0" prefHeight="27.0" prefWidth="80.0">
                     <valueFactory>
                         <SpinnerValueFactory.DoubleSpinnerValueFactory max="5000" min="0" />
                     </valueFactory>
@@ -65,11 +65,11 @@
                   <Label layoutX="14.0" layoutY="52.0" prefHeight="18.0" prefWidth="59.0" text="Tipo :" />
                   <Label layoutX="14.0" layoutY="111.0" prefHeight="18.0" prefWidth="52.0" text="Tamaño :" />
                   <Label layoutX="14.0" layoutY="174.0" prefHeight="18.0" prefWidth="52.0" text="Color :" />
-                  <Label layoutX="14.0" layoutY="226.0" text="Desde" />
-                  <Label layoutX="106.0" layoutY="226.0" text="Hasta" />
-                  <Label layoutX="206.0" layoutY="248.0" text="\$" />
-                  <ChoiceBox fx:id="marcaBox" layoutX="84.0" layoutY="323.0" prefWidth="150.0" />
-                  <Label layoutX="14.0" layoutY="327.0" text="Marcas" />
+                  <Label layoutX="17.0" layoutY="294.0" text="Desde" />
+                  <Label layoutX="121.0" layoutY="294.0" text="Hasta" />
+                  <Label layoutX="215.0" layoutY="321.0" text="\$" />
+                  <ChoiceBox fx:id="marcaBox" layoutX="84.0" layoutY="229.0" prefWidth="150.0" />
+                  <Label layoutX="14.0" layoutY="234.0" text="Marca :" />
                </children></AnchorPane>
           <AnchorPane fx:id="parteRopa" minHeight="0.0" minWidth="0.0" prefHeight="556.0" prefWidth="734.0">
                <children>
